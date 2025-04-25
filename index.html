@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akçalı Dekorasyon</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS Animasyon Kütüphanesi -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animation.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 200 200">
+                <!-- Logo sembolü - Stilize ev/çatı ve dekoratif unsur -->
+                <path class="logo-path main-path" 
+                    d="M100 30 L160 70 L160 140 L40 140 L40 70 Z"
+                    stroke="#3B82F6"
+                    stroke-width="3"
+                    fill="transparent"
+                />
+                
+                <!-- Dekoratif süsleme - çatı çizgisi -->
+                <path class="logo-path"
+                    d="M70 85 L130 85"
+                    stroke="#3B82F6"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                />
+                
+                <!-- Dekoratif süsleme - kapı -->
+                <path class="logo-path"
+                    d="M90 140 L90 105 L110 105 L110 140"
+                    stroke="#3B82F6"
+                    stroke-width="3"
+                    fill="transparent"
+                />
+                
+                <!-- Dekoratif süsleme - pencereler -->
+                <path class="logo-path"
+                    d="M60 100 L60 120 L75 120 L75 100 Z"
+                    stroke="#3B82F6"
+                    stroke-width="2"
+                    fill="transparent"
+                />
+                
+                <path class="logo-path"
+                    d="M125 100 L125 120 L140 120 L140 100 Z"
+                    stroke="#3B82F6"
+                    stroke-width="2"
+                    fill="transparent"
+                />
+                
+                <!-- Logo metni -->
+                <g class="logo-text">
+                    <text
+                        x="100"
+                        y="170"
+                        font-size="14"
+                        font-weight="bold"
+                        font-family="Arial, sans-serif"
+                        text-anchor="middle"
+                        fill="#3B82F6"
+                    >
+                        AKÇALI
+                    </text>
+                    <text
+                        x="100"
+                        y="185"
+                        font-size="12"
+                        font-family="Arial, sans-serif"
+                        text-anchor="middle"
+                        fill="#3B82F6"
+                    >
+                        DEKORASYON
+                    </text>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm" style="background-color: #e2e8f0;">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <div class="logo-container me-2" style="width: 40px; height: 40px;">
+                    <svg class="logo-svg" viewBox="0 0 200 200" style="width: 100%; height: 100%;">
+                        <path class="logo-path main-path" 
+                            d="M100 30 L160 70 L160 140 L40 140 L40 70 Z"
+                            stroke="#3B82F6"
+                            stroke-width="3"
+                            fill="transparent"
+                        />
+                        <path class="logo-path"
+                            d="M70 85 L130 85"
+                            stroke="#3B82F6"
+                            stroke-width="3"
+                            stroke-linecap="round"
+                        />
+                        <path class="logo-path"
+                            d="M90 140 L90 105 L110 105 L110 140"
+                            stroke="#3B82F6"
+                            stroke-width="3"
+                            fill="transparent"
+                        />
+                    </svg>
+                </div>
+                <span class="brand-text">Akçalı Dekorasyon</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#anasayfa">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#hizmetler">Hizmetlerimiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#fiyat-hesapla">Fiyat Hesapla</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#iletisim">İletişim</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Navbar için padding -->
+    <div class="pt-5 mt-4"></div>
+
+    <!-- Hero Section -->
+    <section id="anasayfa" class="hero-section">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center">
+                    <h1 class="display-4" data-aos="fade-up">Dekorasyon Dünyasına Hoş Geldiniz</h1>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="200">Hayalinizdeki mekanları gerçeğe dönüştürüyoruz</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hizmetler Section -->
+    <section id="hizmetler" class="py-5" style="background-color: #e2e8f0;">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Hizmetlerimiz</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card service-card h-100">
+                        <img src="images/Dvrcita.jpg" class="card-img-top" alt="Duvar Çıtası">
+                        <div class="card-body">
+                            <h5 class="card-title">Duvar Çıtası</h5>
+                            <p class="card-text">Modern ve şık duvar çıtası tasarımları ile mekanlarınıza karakter katın.</p>
+                            <a href="galeri.html?kategori=duvar-citasi" class="btn btn-outline-primary">Galeriye Git</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card service-card h-100">
+                        <img src="images/lambri.jpeg" class="card-img-top" alt="Lambriler">
+                        <div class="card-body">
+                            <h5 class="card-title">Lambriler</h5>
+                            <p class="card-text">Ahşap lambri kaplamalar ile mekanlarınıza sıcak ve doğal bir dokunuş.</p>
+                            <a href="galeri.html?kategori=lambriler" class="btn btn-outline-primary">Galeriye Git</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card service-card h-100">
+                        <img src="images/TV.jpg" class="card-img-top" alt="TV Üniteleri">
+                        <div class="card-body">
+                            <h5 class="card-title">TV Üniteleri</h5>
+                            <p class="card-text">Özel tasarım TV üniteleri ile yaşam alanlarınızı düzenleyin.</p>
+                            <a href="galeri.html?kategori=tv" class="btn btn-outline-primary">Galeriye Git</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card service-card h-100">
+                        <img src="images/isyeri.jpg" class="card-img-top" alt="İş Yerleri">
+                        <div class="card-body">
+                            <h5 class="card-title">İş Yerleri</h5>
+                            <p class="card-text">Profesyonel iş yeri dekorasyonu ile kurumsal kimliğinizi yansıtın.</p>
+                            <a href="galeri.html?kategori=isyerleri" class="btn btn-outline-primary">Galeriye Git</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card service-card h-100">
+                        <img src="images/Tavan.jpg" class="card-img-top" alt="Tavan Dekorasyon">
+                        <div class="card-body">
+                            <h5 class="card-title">Tavan Dekorasyon</h5>
+                            <p class="card-text">Özel tasarım tavan dekorasyonları ile mekanlarınıza estetik bir görünüm kazandırın.</p>
+                            <a href="galeri.html?kategori=tavan" class="btn btn-outline-primary">Galeriye Git</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fiyat Hesaplama Section -->
+    <section id="fiyat-hesapla" class="py-5" style="background-color: #e2e8f0;">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Fiyat Hesapla</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form id="fiyatHesaplamaForm">
+                        <div class="mb-3">
+                            <label for="hizmetKategori" class="form-label">Hizmet Kategorisi</label>
+                            <select class="form-select" id="hizmetKategori" required>
+                                <option value="">Seçiniz</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="en" class="form-label">En (cm)</label>
+                            <input type="number" class="form-control" id="en" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="boy" class="form-label">Boy (cm)</label>
+                            <input type="number" class="form-control" id="boy" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Hesapla</button>
+                    </form>
+                    <div id="fiyatSonuc" class="mt-4 text-center d-none">
+                        <h4>Tahmini Fiyat: <span id="hesaplananFiyat"></span> TL</h4>
+                        <a href="https://wa.me/905447656569" id="whatsappLink" class="btn btn-success mt-3" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp ile İletişime Geç
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim Section -->
+    <section id="iletisim" class="py-5" style="background-color: #e2e8f0;">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">İletişim</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <div class="contact-info">
+                        <a href="tel:+905447656569" class="btn btn-outline-primary mb-3">
+                            <i class="fas fa-phone"></i> Telefon
+                        </a>
+                        <a href="https://instagram.com/engin.hacanoglu" target="_blank" class="btn btn-outline-danger mb-3">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="https://wa.me/905447656569" target="_blank" class="btn btn-outline-success mb-3">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; Akçalı Dekorasyon. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Splash screen'i 3 saniye sonra kaldır
+        setTimeout(() => {
+            const splashScreen = document.getElementById('splashScreen');
+            splashScreen.classList.add('fade-out');
+            setTimeout(() => {
+                splashScreen.style.display = 'none';
+            }, 500);
+        }, 3000);
+    </script>
+</body>
+</html> 

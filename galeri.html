@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri - Dekorasyon Hizmetleri</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Lightbox CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .gallery-container {
+            padding: 80px 0;
+        }
+        .gallery-item {
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .back-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Dekorasyon</a>
+            <span class="navbar-text" id="kategoriBaslik">
+                <!-- Kategori başlığı JavaScript ile eklenecek -->
+            </span>
+        </div>
+    </nav>
+
+    <!-- Galeri Section -->
+    <section class="gallery-container">
+        <div class="container">
+            <div class="row" id="galeriContainer">
+                <!-- Resimler JavaScript ile eklenecek -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Geri Dön Butonu -->
+    <a href="index.html#hizmetler" class="btn btn-primary back-button">
+        <i class="fas fa-arrow-left me-2"></i>Geri Dön
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+        // URL'den kategori parametresini al
+        const urlParams = new URLSearchParams(window.location.search);
+        const kategori = urlParams.get('kategori');
+
+        // Kategori başlığını ayarla
+        const kategoriBaslikMap = {
+            'duvar-citasi': 'Duvar Çıtası Galeri',
+            'lambriler': 'Lambri Galeri',
+            'tv': 'TV Ünitesi Galeri',
+            'isyerleri': 'İş Yerleri Galeri',
+            'tavan': 'Tavan Dekorasyon Galeri'
+        };
+
+        document.getElementById('kategoriBaslik').textContent = kategoriBaslikMap[kategori] || 'Galeri';
+
+        // Galeri resimlerini yükle
+        const galeriContainer = document.getElementById('galeriContainer');
+        
+        // Her kategori için resim sayısını belirt
+        const resimSayilari = {
+            'duvar-citasi': 7,
+            'lambriler': 7,
+            'tv': 3,
+            'isyerleri': 6,
+            'tavan': 8
+        };
+
+        // Resimleri oluştur
+        const resimSayisi = resimSayilari[kategori] || 0;
+        for(let i = 1; i <= resimSayisi; i++) {
+            const col = document.createElement('div');
+            col.className = 'col-md-6 col-lg-4';
+            
+            col.innerHTML = `
+                <div class="gallery-item">
+                    <a href="images/${kategori}/${i}.jpg" data-lightbox="${kategori}" data-title="Görsel ${i}">
+                        <img src="images/${kategori}/${i}.jpg" alt="${kategoriBaslikMap[kategori]} ${i}" class="img-fluid">
+                    </a>
+                </div>
+            `;
+            
+            galeriContainer.appendChild(col);
+        }
+
+        // Lightbox ayarları
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'albumLabel': 'Görsel %1 / %2'
+        });
+    </script>
+</body>
+</html> 
