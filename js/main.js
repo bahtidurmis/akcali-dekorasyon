@@ -87,7 +87,7 @@ fiyatHesaplamaForm.addEventListener('submit', (e) => {
             "En: " + en + " cm",
             "Boy: " + boy + " cm",
             "Toplam Alan: " + alan.toFixed(2) + " m2",
-            "Hesaplanan Fiyat: " + toplamFiyat.toLocaleString() + " TL",
+            "Hesaplanan Fiyat: " + toplamFiyat.toLocaleString() + " TL + İşçilik",
             "Detayli bilgi almak istiyorum."
         ];
         
