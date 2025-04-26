@@ -96,15 +96,27 @@ body {
 @media (max-width: 991.98px) {
     .navbar-collapse {
         background: #e5e3d2 !important;
-        padding: 1rem;
+        padding: 1rem 0.5rem !important;
         border-radius: 0.5rem;
         margin-top: 0.5rem;
         box-shadow: 0 4px 6px rgba(212, 175, 55, 0.1);
+        max-height: 90vh;
+        overflow-y: auto;
     }
     .navbar-nav .nav-link {
         font-size: 1.4rem !important;
-        padding: 1rem 0 !important;
+        padding: 0.7rem 0 !important;
         text-align: center;
+    }
+    .navbar-brand {
+        padding: 0.1rem 0.7rem !important;
+    }
+    .navbar-brand .brand-text {
+        font-size: 1.1rem !important;
+    }
+    .logo-container {
+        width: 28px !important;
+        height: 28px !important;
     }
 }
 
