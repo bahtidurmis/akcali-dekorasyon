@@ -1,9 +1,9 @@
 /* Genel Stiller */
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #e74c3c;
-    --bg-color: #e2e8f0;
+    --primary-color: #D4AF37;
+    --secondary-color: #D4AF37;
+    --accent-color: #FFD700;
+    --bg-color: #D4AF37;
 }
 
 body {
@@ -11,6 +11,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    color: #222;
 }
 
 /* Navbar */
@@ -19,8 +20,8 @@ body {
     top: 0;
     width: 100%;
     z-index: 1000;
-    background-color: var(--bg-color);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #e5e3d2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     padding: 0.5rem 0;
 }
 
@@ -28,12 +29,17 @@ body {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    background: #e5e3d2;
+    border: 2px solid #D4AF37;
+    border-radius: 12px;
+    padding: 0.25rem 1.25rem;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.05);
 }
 
 .brand-text {
     font-size: 1.6rem;
     font-weight: 600;
-    color: #3B82F6;
+    color: var(--secondary-color);
     letter-spacing: -0.5px;
 }
 
@@ -45,7 +51,7 @@ body {
     transform: translateY(-50%);
     height: 20px;
     width: 1px;
-    background-color: #cbd5e1;
+    background-color: var(--secondary-color);
 }
 
 .nav-item {
@@ -53,17 +59,14 @@ body {
     padding: 0 0.2rem;
 }
 
-.nav-link {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: #475569 !important;
-    padding: 0.35rem 1.25rem;
-    transition: all 0.3s ease;
-    position: relative;
+.navbar .navbar-nav .nav-link {
+    color: #D4AF37 !important;
+    transition: color 0.2s;
 }
 
-.nav-link:hover {
-    color: #3B82F6 !important;
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link:focus {
+    color: #FFD700 !important;
 }
 
 .nav-link::after {
@@ -74,7 +77,7 @@ body {
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background-color: #3B82F6;
+    background-color: var(--secondary-color);
     transition: width 0.3s ease;
 }
 
@@ -92,11 +95,11 @@ body {
 
 @media (max-width: 991.98px) {
     .navbar-collapse {
-        background: var(--bg-color);
+        background: #e5e3d2;
         padding: 1rem;
         border-radius: 0.5rem;
         margin-top: 0.5rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 6px rgba(212, 175, 55, 0.1);
     }
 
     .nav-item:not(:last-child)::after {
@@ -123,11 +126,11 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/hero-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: white;
+    color: var(--secondary-color);
     position: relative;
     overflow: hidden;
     margin: 0;
@@ -170,12 +173,13 @@ body {
     overflow: hidden;
     transition: transform 0.3s ease;
     margin-bottom: 30px;
-    background-color: white;
+    background-color: #2a2a2a;
+    color: #ffffff;
 }
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
 }
 
 .service-card img {
@@ -186,10 +190,11 @@ body {
 
 /* Fiyat Hesaplama Form */
 #fiyatHesaplamaForm {
-    background-color: white;
+    background-color: #2a2a2a;
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.1);
+    color: #ffffff;
 }
 
 /* İletişim Butonları */
@@ -202,6 +207,15 @@ body {
 
 .contact-info .btn {
     min-width: 150px;
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: #000000;
+}
+
+.contact-info .btn:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #000000;
 }
 
 /* Responsive Tasarım */
@@ -293,7 +307,7 @@ section h2:after {
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(to right, #3B82F6, transparent);
+    background: linear-gradient(to right, #D4AF37, transparent);
 }
 
 #fiyatSonuc {
@@ -305,4 +319,42 @@ section h2:after {
 
 .bg-light {
     background-color: var(--bg-color) !important;
+}
+
+/* Footer */
+footer {
+    background-color: #000000;
+    color: var(--secondary-color);
+}
+
+/* Hizmetler Section */
+section#hizmetler {
+    background-color: #e5e3d2 !important;
+}
+
+/* Fiyat Hesaplama Section */
+section#fiyat-hesapla {
+    background-color: #e5e3d2 !important;
+}
+
+/* İletişim Section */
+section#iletisim {
+    background-color: #e5e3d2 !important;
+}
+
+.card, .service-card, #fiyatSonuc {
+    background-color: #e5e3d2 !important;
+    color: #222 !important;
+}
+
+.btn-outline-primary {
+    color: #D4AF37 !important;
+    border-color: #D4AF37 !important;
+    background-color: transparent !important;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+    background-color: #D4AF37 !important;
+    color: #000 !important;
+    border-color: #FFD700 !important;
 } 

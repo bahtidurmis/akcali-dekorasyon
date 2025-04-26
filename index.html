@@ -22,39 +22,39 @@
                 <!-- Logo sembolü - Stilize ev/çatı ve dekoratif unsur -->
                 <path class="logo-path main-path" 
                     d="M100 30 L160 70 L160 140 L40 140 L40 70 Z"
-                    stroke="#3B82F6"
-                    stroke-width="3"
+                    stroke="#D4AF37"
+                    stroke-width="5"
                     fill="transparent"
                 />
                 
                 <!-- Dekoratif süsleme - çatı çizgisi -->
                 <path class="logo-path"
                     d="M70 85 L130 85"
-                    stroke="#3B82F6"
-                    stroke-width="3"
+                    stroke="#D4AF37"
+                    stroke-width="5"
                     stroke-linecap="round"
                 />
                 
                 <!-- Dekoratif süsleme - kapı -->
                 <path class="logo-path"
                     d="M90 140 L90 105 L110 105 L110 140"
-                    stroke="#3B82F6"
-                    stroke-width="3"
+                    stroke="#D4AF37"
+                    stroke-width="5"
                     fill="transparent"
                 />
                 
                 <!-- Dekoratif süsleme - pencereler -->
                 <path class="logo-path"
                     d="M60 100 L60 120 L75 120 L75 100 Z"
-                    stroke="#3B82F6"
-                    stroke-width="2"
+                    stroke="#D4AF37"
+                    stroke-width="3"
                     fill="transparent"
                 />
                 
                 <path class="logo-path"
                     d="M125 100 L125 120 L140 120 L140 100 Z"
-                    stroke="#3B82F6"
-                    stroke-width="2"
+                    stroke="#D4AF37"
+                    stroke-width="3"
                     fill="transparent"
                 />
                 
@@ -67,7 +67,7 @@
                         font-weight="bold"
                         font-family="Arial, sans-serif"
                         text-anchor="middle"
-                        fill="#3B82F6"
+                        fill="#D4AF37"
                     >
                         AKÇALI
                     </text>
@@ -77,7 +77,7 @@
                         font-size="12"
                         font-family="Arial, sans-serif"
                         text-anchor="middle"
-                        fill="#3B82F6"
+                        fill="#D4AF37"
                     >
                         DEKORASYON
                     </text>
@@ -87,7 +87,7 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm" style="background-color: #e2e8f0;">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center w-100">
                 <a class="navbar-brand d-flex align-items-center" href="#">
@@ -95,20 +95,20 @@
                         <svg class="logo-svg" viewBox="0 0 200 200" style="width: 100%; height: 100%;">
                             <path class="logo-path main-path" 
                                 d="M100 30 L160 70 L160 140 L40 140 L40 70 Z"
-                                stroke="#3B82F6"
-                                stroke-width="3"
+                                stroke="#D4AF37"
+                                stroke-width="7"
                                 fill="transparent"
                             />
                             <path class="logo-path"
                                 d="M70 85 L130 85"
-                                stroke="#3B82F6"
-                                stroke-width="3"
+                                stroke="#D4AF37"
+                                stroke-width="7"
                                 stroke-linecap="round"
                             />
                             <path class="logo-path"
                                 d="M90 140 L90 105 L110 105 L110 140"
-                                stroke="#3B82F6"
-                                stroke-width="3"
+                                stroke="#D4AF37"
+                                stroke-width="7"
                                 fill="transparent"
                             />
                         </svg>
@@ -126,9 +126,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link py-2 py-lg-0" href="#hizmetler">Hizmetlerimiz</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link py-2 py-lg-0" href="#fiyat-hesapla">Fiyat Hesapla</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link py-2 py-lg-0" href="#iletisim">İletişim</a>
@@ -154,7 +151,7 @@
     </section>
 
     <!-- Hizmetler Section -->
-    <section id="hizmetler" class="py-5" style="background-color: #e2e8f0;">
+    <section id="hizmetler" class="py-5" style="color: #D4AF37;">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Hizmetlerimiz</h2>
             <div class="row">
@@ -212,42 +209,8 @@
         </div>
     </section>
 
-    <!-- Fiyat Hesaplama Section -->
-    <section id="fiyat-hesapla" class="py-5" style="background-color: #e2e8f0;">
-        <div class="container">
-            <h2 class="text-center mb-5">Fiyat Hesapla</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <form id="fiyatHesaplamaForm">
-                        <div class="mb-3">
-                            <label for="hizmetKategori" class="form-label">Hizmet Kategorisi</label>
-                            <select class="form-select" id="hizmetKategori" required>
-                                <option value="">Seçiniz</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="en" class="form-label">En (cm)</label>
-                            <input type="number" class="form-control" id="en" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="boy" class="form-label">Boy (cm)</label>
-                            <input type="number" class="form-control" id="boy" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Hesapla</button>
-                    </form>
-                    <div id="fiyatSonuc" class="mt-4 text-center d-none">
-                        <h4>Tahmini Fiyat: <span id="hesaplananFiyat"></span> TL + İşçilik</h4>
-                        <a href="https://wa.me/905447656569" id="whatsappLink" class="btn btn-success mt-3" target="_blank">
-                            <i class="fab fa-whatsapp"></i> WhatsApp ile İletişime Geç
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- İletişim Section -->
-    <section id="iletisim" class="py-5" style="background-color: #e2e8f0;">
+    <section id="iletisim" class="py-5" style="color: #D4AF37;">
         <div class="container">
             <h2 class="text-center mb-5">İletişim</h2>
             <div class="row justify-content-center">
