@@ -372,4 +372,47 @@ section#iletisim {
 .splash-screen .logo-svg {
     width: 100% !important;
     height: 100% !important;
+}
+
+.navbar-toggler {
+    border-color: #D4AF37 !important;
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    background: none !important;
+    background-image: none !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1.8em;
+    height: 1.8em;
+    padding: 0;
+}
+
+.navbar-toggler-icon div {
+    width: 1.5em;
+    height: 3px;
+    background: #D4AF37;
+    margin: 0.2em 0;
+    border-radius: 2px;
+    transition: background 0.2s;
+    display: block;
+}
+
+/* Custom hamburger icon for Bootstrap 5 */
+.navbar-toggler-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navbar-toggler-icon div {
+    background: #D4AF37;
+}
+
+/* Hide default icon and use custom */
+.navbar-toggler-icon span {
+    display: none;
 } 
