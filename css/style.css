@@ -22,29 +22,29 @@ body {
     z-index: 1000;
     background-color: #e5e3d2;
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    min-height: 40px;
-    padding: 0.2rem 0 !important;
+    min-height: 64px;
+    padding: 0.7rem 0 !important;
 }
 
 .navbar-brand {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.3rem;
     background: #e5e3d2;
     border: 2px solid #D4AF37;
     border-radius: 12px;
-    padding: 0.3rem 1.5rem !important;
-    min-height: 48px;
+    padding: 0.5rem 2.2rem !important;
+    min-height: 56px;
     box-shadow: 0 2px 8px rgba(212, 175, 55, 0.05);
 }
 
 .logo-container {
-    width: 32px !important;
-    height: 32px !important;
+    width: 40px !important;
+    height: 40px !important;
 }
 
 .brand-text {
-    font-size: 1.25rem !important;
+    font-size: 1.5rem !important;
     font-weight: 600;
     color: var(--secondary-color);
     letter-spacing: -0.5px;
@@ -99,7 +99,7 @@ body {
 @media (max-width: 991.98px) {
     .navbar-collapse {
         background: #e5e3d2 !important;
-        padding: 0.5rem 0.2rem !important;
+        padding: 0.3rem 0 !important;
         border-radius: 0.5rem;
         margin-top: 0.5rem;
         box-shadow: 0 4px 6px rgba(212, 175, 55, 0.1);
@@ -112,16 +112,16 @@ body {
         text-align: center;
     }
     .navbar-brand {
-        padding: 0.15rem 0.8rem !important;
-        min-height: 36px;
-        gap: 0.6rem;
+        padding: 0.25rem 1.2rem !important;
+        min-height: 40px;
+        gap: 0.9rem;
     }
     .logo-container {
-        width: 22px !important;
-        height: 22px !important;
+        width: 28px !important;
+        height: 28px !important;
     }
     .brand-text {
-        font-size: 1rem !important;
+        font-size: 1.15rem !important;
     }
 }
 
