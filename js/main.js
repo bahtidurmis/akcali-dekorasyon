@@ -100,19 +100,40 @@ fiyatHesaplamaForm.addEventListener('submit', (e) => {
 });
 
 // Mobil menü için smooth scroll
+// Menü kapanması için düzeltilmiş kod
+
+// Mobil menü için smooth scroll ve hamburger menü kapatma
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-            // Mobil menüyü kapat
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            if (navbarCollapse.classList.contains('show')) {
-                navbarCollapse.classList.remove('show');
+            // Önce menüyü kapat
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                bsCollapse.hide();
+            }
+            
+            // Sonra sayfayı kaydır
+            setTimeout(() => {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }, 300); // Menünün kapanması için biraz bekle
+        }
+    });
+});
+
+// İkinci yöntem olarak ayrıca bunu ekleyebilirsiniz
+document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+    link.addEventListener('click', function () {
+        // Mobil görünümde olup olmadığını kontrol et
+        if (window.innerWidth < 992) {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            if (!navbarToggler.classList.contains('collapsed')) {
+                navbarToggler.click(); // Hamburger butonuna programatik tıklama
             }
         }
     });
-}); 
+});
