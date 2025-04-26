@@ -363,4 +363,13 @@ section#iletisim {
     background-color: #D4AF37 !important;
     color: #000 !important;
     border-color: #FFD700 !important;
+}
+
+.splash-screen .logo-container {
+    width: 240px !important;
+    height: 240px !important;
+}
+.splash-screen .logo-svg {
+    width: 100% !important;
+    height: 100% !important;
 } 
