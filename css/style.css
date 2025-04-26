@@ -101,22 +101,10 @@ body {
         margin-top: 0.5rem;
         box-shadow: 0 4px 6px rgba(212, 175, 55, 0.1);
     }
-
-    .nav-item:not(:last-child)::after {
-        display: none;
-    }
-
-    .nav-link {
-        padding: 0.75rem 1rem;
-        border-radius: 0.375rem;
-    }
-
-    .nav-link:hover {
-        background-color: rgba(59, 130, 246, 0.1);
-    }
-
-    .nav-link::after {
-        display: none;
+    .navbar-nav .nav-link {
+        font-size: 1.4rem !important;
+        padding: 1rem 0 !important;
+        text-align: center;
     }
 }
 
@@ -130,7 +118,7 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    background: linear-gradient(#e5e3d2, rgba(0, 0, 0, 0.7)), url('../images/hero-bg.jpg');
+    background: linear-gradient(#e8e3b8, rgba(0, 0, 0, 0.7)), url('../images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
