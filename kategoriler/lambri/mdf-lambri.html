@@ -12,9 +12,33 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../urunler.css">
     <style>
+        .navbar-toggler-icon {
+            background: none !important;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 1.8em;
+            height: 1.8em;
+            padding: 0;
+        }
+
+        .navbar-toggler-icon div {
+            width: 1.5em;
+            height: 3px;
+            background-color: #D4AF37;
+            margin: 0.2em 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-toggler {
+            border-color: #D4AF37 !important;
+            padding: 0.5rem;
+        }
         .urun-kart {
             transition: transform 0.3s ease;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             border: none;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
@@ -50,7 +74,11 @@
                 <span class="brand-text">Akçalı Dekorasyon</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav text-center text-lg-end ms-lg-auto">
@@ -61,7 +89,7 @@
                         <a class="nav-link" href="../../index.html#hizmetler">Hizmetlerimiz</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="../../urunler.html">Ürünlerimiz</a>
+                        <a class="nav-link active" href="../../urunler.html">Kullandığımız Ürünler</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../../index.html#iletisim">İletişim</a>
@@ -73,7 +101,7 @@
 
     <!-- Ürünler -->
     <div class="container py-5">
-        <h1 class="text-center mb-5">MDF Lambriler</h1>
+        <h1 class="text-center mb-5" style="color: #D4AF37;">MDF Lambriler</h1>
         <div class="row">
             <!-- Ürün 1 -->
             <div class="col-md-4">
