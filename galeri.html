@@ -13,8 +13,12 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
+        body {
+            background-color: #e5e3d2;
+        }
         .gallery-container {
             padding: 80px 0;
+            background-color: #e5e3d2;
         }
         .gallery-item {
             margin-bottom: 30px;
@@ -44,18 +48,73 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Dekorasyon</a>
-            <span class="navbar-text" id="kategoriBaslik">
-                <!-- Kategori başlığı JavaScript ile eklenecek -->
-            </span>
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <div class="logo-container me-2" style="width: 40px; height: 40px;">
+                        <svg class="logo-svg" viewBox="0 0 200 200" style="width: 100%; height: 100%;">
+                            <path class="logo-path main-path" 
+                                d="M100 30 L160 70 L160 140 L40 140 L40 70 Z"
+                                stroke="#D4AF37"
+                                stroke-width="7"
+                                fill="transparent"
+                            />
+                            <path class="logo-path"
+                                d="M70 85 L130 85"
+                                stroke="#D4AF37"
+                                stroke-width="7"
+                                stroke-linecap="round"
+                            />
+                            <path class="logo-path"
+                                d="M90 140 L90 105 L110 105 L110 140"
+                                stroke="#D4AF37"
+                                stroke-width="7"
+                                fill="transparent"
+                            />
+                        </svg>
+                    </div>
+                    <span class="brand-text">Akçalı Dekorasyon</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse mt-2 mt-lg-0" id="navbarNav">
+                <ul class="navbar-nav text-center text-lg-end ms-lg-auto">
+                    <li class="nav-item">
+                        <a class="nav-link py-2 py-lg-0" href="index.html#anasayfa">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2 py-lg-0" href="index.html#neler-yapiyoruz">Neler Yapıyoruz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2 py-lg-0" href="index.html#hizmetler">Projelerimiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2 py-lg-0" href="urunler.html">Ürünlerimiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2 py-lg-0" href="index.html#iletisim">İletişim</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
+
+    <!-- Navbar için padding -->
+    <div class="pt-5 mt-4"></div>
 
     <!-- Galeri Section -->
     <section class="gallery-container">
         <div class="container">
+            <h2 class="text-center mb-5" style="color: #D4AF37;" id="kategoriBaslik">
+                <!-- Kategori başlığı JavaScript ile eklenecek -->
+            </h2>
             <div class="row" id="galeriContainer">
                 <!-- Resimler JavaScript ile eklenecek -->
             </div>
@@ -84,7 +143,8 @@
             'tavan': 'Tavan Dekorasyon Galeri'
         };
 
-        document.getElementById('kategoriBaslik').textContent = kategoriBaslikMap[kategori] || 'Galeri';
+        const baslik = kategoriBaslikMap[kategori] || 'Galeri';
+        document.getElementById('kategoriBaslik').textContent = baslik;
 
         // Galeri resimlerini yükle
         const galeriContainer = document.getElementById('galeriContainer');

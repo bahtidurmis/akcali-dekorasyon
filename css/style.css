@@ -4,6 +4,8 @@
     --secondary-color: #D4AF37;
     --accent-color: #FFD700;
     --bg-color: #D4AF37;
+    --desktop-font-size: 16px;  /* Masaüstü için varsayılan yazı boyutu */
+    --mobile-font-size: 14px;   /* Mobil için varsayılan yazı boyutu */
 }
 
 body {
@@ -12,6 +14,27 @@ body {
     margin: 0;
     padding: 0;
     color: #222;
+    font-size: var(--desktop-font-size);  /* Varsayılan olarak masaüstü boyutu */
+}
+
+/* Mobil cihazlar için yazı boyutu ayarı */
+@media (max-width: 768px) {
+    body {
+        font-size: var(--mobile-font-size);
+    }
+    
+    /* Örnek olarak başlık boyutlarını da ayarlayabilirsiniz */
+    h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    h3 {
+        font-size: 18px;
+    }
 }
 
 /* Navbar */
@@ -66,9 +89,13 @@ body {
     padding: 0 0.2rem;
 }
 
-.navbar .navbar-nav .nav-link {
+.navbar .navbar-nav .nav-item .nav-link {
     color: #D4AF37 !important;
     transition: color 0.2s;
+    font-size: 1.2rem !important;  /* Masaüstü için yazı boyutu */
+    padding: 0.5rem 1rem !important;  /* Padding değerlerini azalttım */
+    font-weight: 500;
+    white-space: nowrap;  /* Yazıların alt alta geçmesini engeller */
 }
 
 .navbar .navbar-nav .nav-link:hover,
@@ -106,8 +133,8 @@ body {
         max-height: 90vh;
         overflow-y: auto;
     }
-    .navbar-nav .nav-link {
-        font-size: 1.1rem !important;
+    .navbar .navbar-nav .nav-item .nav-link {
+        font-size: 1.1rem !important;  /* Mobil için yazı boyutu */
         padding: 0.5rem 0 !important;
         text-align: center;
     }
@@ -177,24 +204,44 @@ body {
 
 /* Hizmetler Section */
 .service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: none;
+    background-color: white;
     border-radius: 10px;
     overflow: hidden;
-    transition: transform 0.3s ease;
     margin-bottom: 30px;
-    background-color: #2a2a2a;
-    color: #ffffff;
 }
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .service-card img {
     height: 200px;
     object-fit: cover;
     border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.service-card .card-title {
+    color: #D4AF37;
+}
+
+.service-card .card-text {
+    color: #666;
+}
+
+/* Link renklerini düzeltme */
+a.text-decoration-none .card-title {
+    color: #D4AF37 !important;
+}
+
+a.text-decoration-none .card-text {
+    color: #666 !important;
+}
+
+a.text-decoration-none:hover {
+    text-decoration: none;
 }
 
 /* Fiyat Hesaplama Form */
@@ -332,8 +379,7 @@ section h2:after {
 
 /* Footer */
 footer {
-    background-color: #000000;
-    color: var(--secondary-color);
+    display: none !important;  /* Footer'ı tamamen gizliyoruz */
 }
 
 /* Hizmetler Section */
