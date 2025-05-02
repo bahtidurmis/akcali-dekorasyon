@@ -87,12 +87,12 @@
                             Kullandığımız Ürünler
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="kategoriler/duvar-panelleri.html">DUVAR PANELLERİ</a></li>
-                            <li><a class="dropdown-item" href="kategoriler/lambri.html">LAMBRİ</a></li>
-                            <li><a class="dropdown-item" href="kategoriler/pvc-panel.html">PVC DUVAR PANELİ</a></li>
-                            <li><a class="dropdown-item" href="kategoriler/duvar-citasi.html">DUVAR ÇITASI</a></li>
-                            <li><a class="dropdown-item" href="kategoriler/saray-tavan.html">SARAY TAVAN</a></li>
-                            <li><a class="dropdown-item" href="kategoriler/dekor-profili.html">DEKOR PROFİLİ</a></li>
+                            <li><a class="dropdown-item" href="kategoriler/duvar-panelleri.html">Duvar Panelleri</a></li>
+                            <li><a class="dropdown-item" href="kategoriler/lambri.html">Lambri</a></li>
+                            <li><a class="dropdown-item" href="kategoriler/pvc-panel.html">PVC Duvar Paneli</a></li>
+                            <li><a class="dropdown-item" href="kategoriler/duvar-citasi.html">Duvar Çıtası</a></li>
+                            <li><a class="dropdown-item" href="kategoriler/saray-tavan.html">Saray Tavan</a></li>
+                            <li><a class="dropdown-item" href="kategoriler/dekor-profili.html">Dekor Profili</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -105,12 +105,12 @@
     <div class="urunler-container">
         <h1>Kullandığımız Ürünler</h1>
         <div class="kategori-listesi">
-            <a class="kategori-kart" href="kategoriler/duvar-panelleri.html">DUVAR PANELLERİ</a>
-            <a class="kategori-kart" href="kategoriler/lambri.html">LAMBRİ</a>
-            <a class="kategori-kart" href="kategoriler/pvc-panel.html">PVC DUVAR PANELİ</a>
-            <a class="kategori-kart" href="kategoriler/duvar-citasi.html">DUVAR ÇITASI</a>
-            <a class="kategori-kart" href="kategoriler/saray-tavan.html">SARAY TAVAN</a>
-            <a class="kategori-kart" href="kategoriler/dekor-profili.html">DEKOR PROFİLİ</a>
+            <a class="kategori-kart" href="kategoriler/duvar-panelleri.html">Duvar Panelleri</a>
+            <a class="kategori-kart" href="kategoriler/lambri.html">Lambri</a>
+            <a class="kategori-kart" href="kategoriler/pvc-panel.html">PVC Duvar Panel</a>
+            <a class="kategori-kart" href="kategoriler/duvar-citasi.html">Duvar Çıtası</a>
+            <a class="kategori-kart" href="kategoriler/saray-tavan.html">Saray Tavan</a>
+            <a class="kategori-kart" href="kategoriler/dekor-profili.html">Dekor Profili</a>
         </div>
     </div>
 
@@ -177,7 +177,17 @@
                 if (isMobile()) {
                     e.preventDefault();
                     e.stopPropagation();
-                    // Sadece dropdown'ı aç/kapat
+                    
+                    // Diğer tüm dropdown'ları kapat
+                    document.querySelectorAll('.nav-item.dropdown').forEach(function(drop) {
+                        if (drop !== this.parentElement) {
+                            drop.classList.remove('show');
+                            const menu = drop.querySelector('.dropdown-menu');
+                            if (menu) menu.classList.remove('show');
+                        }
+                    }.bind(this));
+
+                    // Tıklanan dropdown'ı aç/kapat
                     const parent = this.parentElement;
                     parent.classList.toggle('show');
                     const menu = parent.querySelector('.dropdown-menu');
@@ -190,12 +200,32 @@
         document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(function(item) {
             item.addEventListener('click', function() {
                 if (isMobile()) {
+                    // Dropdown'u ve menüyü kapat
+                    document.querySelectorAll('.nav-item.dropdown').forEach(function(drop){
+                        drop.classList.remove('show');
+                        var menu = drop.querySelector('.dropdown-menu');
+                        if(menu) menu.classList.remove('show');
+                    });
+                    // Hamburger menüyü kapat
                     const navbarCollapse = document.querySelector('.navbar-collapse.show');
                     if (navbarCollapse) {
                         new bootstrap.Collapse(navbarCollapse).toggle();
                     }
                 }
             });
+        });
+
+        // Hamburger menü dışına tıklandığında menüyü kapat
+        document.addEventListener('click', function(e) {
+            if (isMobile()) {
+                const navbar = document.querySelector('.navbar-collapse');
+                const dropdown = document.querySelector('.nav-item.dropdown');
+                if (!navbar.contains(e.target) && !dropdown.contains(e.target)) {
+                    if (navbar.classList.contains('show')) {
+                        new bootstrap.Collapse(navbar).toggle();
+                    }
+                }
+            }
         });
     });
     </script>

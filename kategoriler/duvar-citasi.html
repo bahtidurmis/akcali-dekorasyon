@@ -7,6 +7,86 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../urunler.css">
+    <style>
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #D4AF37;
+            background: transparent;
+            color: #D4AF37;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #D4AF37;
+            color: white;
+        }
+        .urun-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2.5rem;
+            padding: 1.5rem;
+        }
+        .urun-kart {
+            background: #e5e3d2;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(11, 11, 11, 0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+            padding: 0;
+            border: none;
+            width: 400px;
+            height: 550px;
+            margin: 0 auto;
+        }
+        .urun-resim {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            display: block;
+            flex-shrink: 0;
+        }
+        .urun-info {
+            background: #e5e3d2;
+            border-bottom-left-radius: 18px;
+            border-bottom-right-radius: 18px;
+            padding: 24px 18px 18px 18px;
+            text-align: left;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .urun-baslik {
+            color: #222;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .urun-fiyat {
+            color: #D4AF37;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .urun-aciklama {
+            color: #222;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body style="padding-top: 80px;">
     <!-- Navbar -->
@@ -60,12 +140,12 @@
                             Kullandığımız Ürünler
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../kategoriler/duvar-panelleri.html">DUVAR PANELLERİ</a></li>
-                            <li><a class="dropdown-item" href="../kategoriler/lambri.html">LAMBRİ</a></li>
-                            <li><a class="dropdown-item" href="../kategoriler/pvc-panel.html">PVC DUVAR PANELİ</a></li>
-                            <li><a class="dropdown-item" href="../kategoriler/duvar-citasi.html">DUVAR ÇITASI</a></li>
-                            <li><a class="dropdown-item" href="../kategoriler/saray-tavan.html">SARAY TAVAN</a></li>
-                            <li><a class="dropdown-item" href="../kategoriler/dekor-profili.html">DEKOR PROFİLİ</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/duvar-panelleri.html">Duvar Panelleri</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/lambri.html">Lambri</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/pvc-panel.html">PVC Duvar Panel</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/duvar-citasi.html">Duvar Çıtası</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/saray-tavan.html">Saray Tavan</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/dekor-profili.html">Dekor Profili</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -79,10 +159,27 @@
     <!-- Alt Kategoriler -->
     <div class="urunler-container">
         <h1>DUVAR ÇITASI</h1>
-        <div class="kategori-listesi">
-            <a class="kategori-kart" href="duvar-citasi/ahsap-cita.html">Ahşap Çıta</a>
-            <a class="kategori-kart" href="duvar-citasi/plastik-cita.html">Plastik Çıta</a>
-            <a class="kategori-kart" href="duvar-citasi/mdf-cita.html">MDF Çıta</a>
+        <!-- Filtre Butonları -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Tümü</button>
+            <button class="filter-btn" data-filter="boyanabilir">Boyanabilir Duvar Çıtası</button>
+            <button class="filter-btn" data-filter="motif">Boyanabilir Motifler</button>
+        </div>
+        <div class="urun-grid">
+            <div class="urun-kart" data-category="boyanabilir">
+                <img src="../urunresim/dyvarç1.jpg" class="urun-resim" alt="Boyanabilir Duvar Çıtası 2.5cm">
+                <div class="urun-info">
+                    <div class="urun-baslik">Boyanabilir Duvar Çıtası 2.5cm</div>
+                    <div class="urun-fiyat">₺36,00</div>
+                </div>
+            </div>
+            <div class="urun-kart" data-category="motif">
+                <img src="../urunresim/kosem1.jpg" class="urun-resim" alt="Sarmaşık Poliüretan Boyanabilir 4cm Çıta Geçmeli Köşe Motifi">
+                <div class="urun-info">
+                    <div class="urun-baslik">Sarmaşık Poliüretan Boyanabilir 4cm Çıta Geçmeli Köşe Motifi</div>
+                    <div class="urun-fiyat">₺80,00</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -125,6 +222,28 @@
                         new bootstrap.Collapse(navbarCollapse).toggle();
                     }
                 }
+            });
+        });
+
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.urun-kart');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Aktif buton stilini güncelle
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const category = button.getAttribute('data-filter');
+
+                // Ürünleri filtrele
+                productCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             });
         });
     });
