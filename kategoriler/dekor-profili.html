@@ -156,6 +156,29 @@
         .urun-kart[data-category="cita"] .urun-resim {
             height: 300px;
         }
+        @media (max-width: 600px) {
+            .urunler-container {
+                padding: 10px;
+            }
+            .urun-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+                padding: 0.5rem;
+                justify-items: center;
+            }
+            .urun-kart {
+                width: 100% !important;
+                max-width: 320px;
+                height: auto !important;
+            }
+            .urun-resim {
+                height: 180px !important;
+            }
+            h1 {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body style="padding-top: 80px;">
