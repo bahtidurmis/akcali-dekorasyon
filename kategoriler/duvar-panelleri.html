@@ -7,38 +7,34 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../urunler.css">
-    <style>
-        .navbar-toggler-icon {
-            background: none !important;
-            display: flex !important;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 1.8em;
-            height: 1.8em;
-            padding: 0;
-        }
-
-        .navbar-toggler-icon div {
-            width: 1.5em;
-            height: 3px;
-            background-color: #D4AF37;
-            margin: 0.2em 0;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .navbar-toggler {
-            border-color: #D4AF37 !important;
-            padding: 0.5rem;
-        }
-    </style>
 </head>
 <body style="padding-top: 80px;">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                <div class="logo-container me-2" style="width: 40px; height: 40px;">
+                    <svg class="logo-svg" viewBox="0 0 200 200" style="width: 100%; height: 100%;">
+                        <path class="logo-path main-path" 
+                            d="M100 30 L160 70 L160 140 L40 140 L40 70 Z"
+                            stroke="#D4AF37"
+                            stroke-width="5"
+                            fill="transparent"
+                        />
+                        <path class="logo-path"
+                            d="M70 85 L130 85"
+                            stroke="#D4AF37"
+                            stroke-width="5"
+                            stroke-linecap="round"
+                        />
+                        <path class="logo-path"
+                            d="M90 140 L90 105 L110 105 L110 140"
+                            stroke="#D4AF37"
+                            stroke-width="5"
+                            fill="transparent"
+                        />
+                    </svg>
+                </div>
                 <span class="brand-text">Akçalı Dekorasyon</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -51,16 +47,29 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav text-center text-lg-end ms-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Ana Sayfa</a>
+                        <a class="nav-link py-2 py-lg-0" href="../index.html#anasayfa">Ana Sayfa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html#hizmetler">Hizmetlerimiz</a>
+                        <a class="nav-link py-2 py-lg-0" href="../index.html#neler-yapiyoruz">Neler Yapıyoruz</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="../urunler.html">Kullandığımız Ürünler</a>
+                        <a class="nav-link py-2 py-lg-0" href="../index.html#hizmetler">Projelerimiz</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle py-2 py-lg-0 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Kullandığımız Ürünler
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../kategoriler/duvar-panelleri.html">DUVAR PANELLERİ</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/lambri.html">LAMBRİ</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/pvc-panel.html">PVC DUVAR PANELİ</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/duvar-citasi.html">DUVAR ÇITASI</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/saray-tavan.html">SARAY TAVAN</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/dekor-profili.html">DEKOR PROFİLİ</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html#iletisim">İletişim</a>
+                        <a class="nav-link py-2 py-lg-0" href="../index.html#iletisim">İletişim</a>
                     </li>
                 </ul>
             </div>
@@ -81,5 +90,46 @@
 
     <script src="../js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function isMobile() {
+            return window.innerWidth < 992;
+        }
+
+        // Dropdown ana başlığa tıklanınca menü kapanmasın
+        document.querySelectorAll('.nav-item.dropdown > .dropdown-toggle').forEach(function(dropdownToggle) {
+            dropdownToggle.addEventListener('click', function(e) {
+                if (isMobile()) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Sadece dropdown'ı aç/kapat
+                    const parent = this.parentElement;
+                    parent.classList.toggle('show');
+                    const menu = parent.querySelector('.dropdown-menu');
+                    if (menu) menu.classList.toggle('show');
+                }
+            });
+        });
+
+        // Dropdown içindeki bir kategoriye tıklanınca menüyü kapat
+        document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                if (isMobile()) {
+                    // Dropdown'u ve menüyü kapat
+                    document.querySelectorAll('.nav-item.dropdown').forEach(function(drop){
+                        drop.classList.remove('show');
+                        var menu = drop.querySelector('.dropdown-menu');
+                        if(menu) menu.classList.remove('show');
+                    });
+                    // Hamburger menüyü kapat
+                    const navbarCollapse = document.querySelector('.navbar-collapse.show');
+                    if (navbarCollapse) {
+                        new bootstrap.Collapse(navbarCollapse).toggle();
+                    }
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html> 

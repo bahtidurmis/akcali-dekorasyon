@@ -464,4 +464,72 @@ section#iletisim {
 /* Hide default icon and use custom */
 .navbar-toggler-icon span {
     display: none;
+}
+
+/* Navbar dropdown için özel stil - Güçlendirilmiş Versiyon */
+.navbar .dropdown-menu,
+.navbar-nav .dropdown-menu,
+.dropdown .dropdown-menu {
+    background-color: #e5e3d2 !important;
+    border: 2px solid #D4AF37 !important;
+    border-radius: 8px !important;
+    min-width: 220px !important;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15) !important;
+    padding: 0.5rem 0 !important;
+    margin-top: 0.5rem !important;
+}
+
+.navbar .dropdown-item,
+.dropdown-menu .dropdown-item {
+    color: #D4AF37 !important;
+    font-weight: 500 !important;
+    font-family: 'Arial', sans-serif !important;
+    padding: 12px 24px !important;
+    transition: all 0.2s ease !important;
+    font-size: 1.1rem !important;
+}
+
+.navbar .dropdown-item:hover,
+.navbar .dropdown-item:focus,
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    background-color: #D4AF37 !important;
+    color: #fff !important;
+    transform: translateX(5px) !important;
+}
+
+.navbar .nav-link.dropdown-toggle,
+.nav-item.dropdown .nav-link {
+    color: #D4AF37 !important;
+    font-weight: bold !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.navbar .nav-link.dropdown-toggle::after,
+.nav-item.dropdown .nav-link::after {
+    border-top-color: #D4AF37 !important;
+    margin-left: 0.4em !important;
+    border-width: 0.4em !important;
+}
+
+/* Mobil görünüm için ek stiller */
+@media (max-width: 991.98px) {
+    .navbar .dropdown-menu,
+    .navbar-nav .dropdown-menu {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding-left: 1rem !important;
+    }
+
+    .navbar .dropdown-item {
+        text-align: center !important;
+        padding: 10px !important;
+    }
+
+    .navbar .dropdown-item:hover {
+        transform: none !important;
+    }
 } 

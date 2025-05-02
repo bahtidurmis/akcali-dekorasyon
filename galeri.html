@@ -95,8 +95,18 @@
                     <li class="nav-item">
                         <a class="nav-link py-2 py-lg-0" href="index.html#hizmetler">Projelerimiz</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link py-2 py-lg-0" href="urunler.html">Kullandığımız Ürünler</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle py-2 py-lg-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Kullandığımız Ürünler
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="kategoriler/duvar-panelleri.html">DUVAR PANELLERİ</a></li>
+                            <li><a class="dropdown-item" href="kategoriler/lambri.html">LAMBRİ</a></li>
+                            <li><a class="dropdown-item" href="kategoriler/pvc-panel.html">PVC DUVAR PANELİ</a></li>
+                            <li><a class="dropdown-item" href="kategoriler/duvar-citasi.html">DUVAR ÇITASI</a></li>
+                            <li><a class="dropdown-item" href="kategoriler/saray-tavan.html">SARAY TAVAN</a></li>
+                            <li><a class="dropdown-item" href="kategoriler/dekor-profili.html">DEKOR PROFİLİ</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link py-2 py-lg-0" href="index.html#iletisim">İletişim</a>
@@ -180,6 +190,50 @@
             'resizeDuration': 200,
             'wrapAround': true,
             'albumLabel': 'Görsel %1 / %2'
+        });
+
+        // Dropdown ana menüye tıklanınca sayfa yenilenmesini engelle
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(function(toggle) {
+            toggle.addEventListener('click', function(e) {
+                if (this.classList.contains('dropdown-toggle')) {
+                    e.preventDefault();
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Sadece mobilde çalışsın
+            function isMobile() {
+                return window.innerWidth < 992;
+            }
+
+            // Dropdown ana başlığa tıklanınca menü kapanmasın
+            document.querySelectorAll('.nav-item.dropdown > .dropdown-toggle').forEach(function(dropdownToggle) {
+                dropdownToggle.addEventListener('click', function(e) {
+                    if (isMobile()) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // Sadece dropdown'ı aç/kapat
+                        const parent = this.parentElement;
+                        parent.classList.toggle('show');
+                        const menu = parent.querySelector('.dropdown-menu');
+                        if (menu) menu.classList.toggle('show');
+                    }
+                });
+            });
+
+            // Dropdown içindeki bir kategoriye tıklanınca menüyü kapat
+            document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(function(item) {
+                item.addEventListener('click', function() {
+                    if (isMobile()) {
+                        const navbarCollapse = document.querySelector('.navbar-collapse.show');
+                        if (navbarCollapse) {
+                            new bootstrap.Collapse(navbarCollapse).toggle();
+                        }
+                    }
+                });
+            });
         });
     </script>
 </body>
