@@ -14,7 +14,70 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="urunler.css?v=999">
     <link rel="stylesheet" href="css/animation.css">
+    <style>
+        .navbar-toggler-icon {
+            background: none !important;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 1.8em;
+            height: 1.8em;
+            padding: 0;
+        }
 
+        .navbar-toggler-icon div {
+            width: 1.5em;
+            height: 3px;
+            background-color: #D4AF37;
+            margin: 0.2em 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-toggler {
+            border-color: #D4AF37 !important;
+            padding: 0.5rem;
+        }
+
+        /* Mobile dropdown styles */
+        @media (max-width: 991.98px) {
+            .dropdown-menu {
+                background-color: transparent !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+            }
+
+            .dropdown-item {
+                color: #D4AF37 !important;
+                padding: 0.5rem 1rem !important;
+                text-align: center !important;
+                font-weight: 500 !important;
+            }
+
+            .dropdown-item:hover {
+                background-color: transparent !important;
+                color: #fff !important;
+            }
+
+            .nav-item.dropdown.show .dropdown-menu {
+                display: block !important;
+                position: static !important;
+                float: none !important;
+                width: 100% !important;
+                margin-top: 0 !important;
+                background-color: transparent !important;
+                border: 0 !important;
+                box-shadow: none !important;
+            }
+
+            .navbar-nav .dropdown-menu {
+                position: static !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Splash Screen -->
@@ -334,71 +397,59 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // Splash screen'i 3 saniye sonra kaldır
-        setTimeout(() => {
-            const splashScreen = document.getElementById('splashScreen');
-            splashScreen.classList.add('fade-out');
-            setTimeout(() => {
-                splashScreen.style.display = 'none';
-            }, 500);
-        }, 3000);
+        // AOS Animasyon Kütüphanesi
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Splash Screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('splashScreen').style.display = 'none';
+            }, 2000);
+        });
+
+        // Mobile dropdown functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            function isMobile() {
+                return window.innerWidth < 992;
+            }
+
+            // Dropdown ana başlığa tıklanınca menü kapanmasın
+            document.querySelectorAll('.nav-item.dropdown > .dropdown-toggle').forEach(function(dropdownToggle) {
+                dropdownToggle.addEventListener('click', function(e) {
+                    if (isMobile()) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // Sadece dropdown'ı aç/kapat
+                        const parent = this.parentElement;
+                        parent.classList.toggle('show');
+                        const menu = parent.querySelector('.dropdown-menu');
+                        if (menu) menu.classList.toggle('show');
+                    }
+                });
+            });
+
+            // Dropdown içindeki bir kategoriye tıklanınca menüyü kapat
+            document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(function(item) {
+                item.addEventListener('click', function() {
+                    if (isMobile()) {
+                        // Dropdown'u ve menüyü kapat
+                        document.querySelectorAll('.nav-item.dropdown').forEach(function(drop){
+                            drop.classList.remove('show');
+                            var menu = drop.querySelector('.dropdown-menu');
+                            if(menu) menu.classList.remove('show');
+                        });
+                        // Hamburger menüyü kapat
+                        const navbarCollapse = document.querySelector('.navbar-collapse.show');
+                        if (navbarCollapse) {
+                            new bootstrap.Collapse(navbarCollapse).toggle();
+                        }
+                    }
+                });
+            });
+        });
     </script>
-    <script>
-    // Menüde bir linke tıklanınca navbar'ı kapat
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function () {
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            if (navbarCollapse.classList.contains('show')) {
-                new bootstrap.Collapse(navbarCollapse).toggle();
-            }
-        });
-    });
-</script>
-<script>
-// Dropdown ana menüye tıklanınca sayfa yenilenmesini engelle
-const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-dropdownToggles.forEach(function(toggle) {
-    toggle.addEventListener('click', function(e) {
-        if (this.classList.contains('dropdown-toggle')) {
-            e.preventDefault();
-        }
-    });
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Sadece mobilde çalışsın
-    function isMobile() {
-        return window.innerWidth < 992;
-    }
-
-    // Dropdown ana başlığa tıklanınca menü kapanmasın
-    document.querySelectorAll('.nav-item.dropdown > .dropdown-toggle').forEach(function(dropdownToggle) {
-        dropdownToggle.addEventListener('click', function(e) {
-            if (isMobile()) {
-                e.preventDefault();
-                e.stopPropagation();
-                // Sadece dropdown'ı aç/kapat
-                const parent = this.parentElement;
-                parent.classList.toggle('show');
-                const menu = parent.querySelector('.dropdown-menu');
-                if (menu) menu.classList.toggle('show');
-            }
-        });
-    });
-
-    // Dropdown içindeki bir kategoriye tıklanınca menüyü kapat
-    document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(function(item) {
-        item.addEventListener('click', function() {
-            if (isMobile()) {
-                const navbarCollapse = document.querySelector('.navbar-collapse.show');
-                if (navbarCollapse) {
-                    new bootstrap.Collapse(navbarCollapse).toggle();
-                }
-            }
-        });
-    });
-});
-</script>
 </body>
 </html> 
