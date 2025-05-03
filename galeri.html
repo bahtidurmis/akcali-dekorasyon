@@ -44,6 +44,46 @@
             border-radius: 50px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
+
+        /* Mobil Lightbox Stilleri */
+        @media (max-width: 768px) {
+            .lb-outerContainer {
+                max-width: 100% !important;
+                max-height: 100% !important;
+                margin: 0 !important;
+            }
+            
+            .lb-container {
+                padding: 0 !important;
+            }
+            
+            .lb-image {
+                max-width: 100% !important;
+                max-height: 100% !important;
+                height: auto !important;
+            }
+            
+            .lb-nav {
+                width: 100% !important;
+                position: absolute !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+            }
+            
+            .lb-prev, .lb-next {
+                opacity: 0.7 !important;
+                background: rgba(0,0,0,0.5) !important;
+                padding: 20px !important;
+            }
+            
+            .lb-prev {
+                left: 0 !important;
+            }
+            
+            .lb-next {
+                right: 0 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -161,11 +201,11 @@
         
         // Her kategori için resim sayısını belirt
         const resimSayilari = {
-            'duvar-citasi': 7,
-            'lambriler': 7,
+            'duvar-citasi': 13,
+            'lambriler': 10,
             'tv': 3,
             'isyerleri': 6,
-            'tavan': 8
+            'tavan': 15
         };
 
         // Resimleri oluştur
@@ -189,7 +229,46 @@
         lightbox.option({
             'resizeDuration': 200,
             'wrapAround': true,
-            'albumLabel': 'Görsel %1 / %2'
+            'albumLabel': 'Görsel %1 / %2',
+            'fadeDuration': 300,
+            'imageFadeDuration': 300,
+            'disableScrolling': true,
+            'fitImagesInViewport': true,
+            'maxWidth': 1200,
+            'maxHeight': 800,
+            'positionFromTop': 50,
+            'showImageNumberLabel': true,
+            'alwaysShowNavOnTouchDevices': true
+        });
+
+        // Mobil cihazlarda kaydırma desteği
+        document.addEventListener('DOMContentLoaded', function() {
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            document.querySelector('.lb-outerContainer').addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            document.querySelector('.lb-outerContainer').addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const swipeDistance = touchEndX - touchStartX;
+                
+                if (Math.abs(swipeDistance) > swipeThreshold) {
+                    if (swipeDistance > 0) {
+                        // Sağa kaydırma - önceki resim
+                        document.querySelector('.lb-prev').click();
+                    } else {
+                        // Sola kaydırma - sonraki resim
+                        document.querySelector('.lb-next').click();
+                    }
+                }
+            }
         });
 
         // Dropdown ana menüye tıklanınca sayfa yenilenmesini engelle
