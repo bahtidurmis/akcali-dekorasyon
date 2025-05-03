@@ -70,114 +70,52 @@
                 position: static !important;
             }
         }
-        .filter-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
+        .filtre-buton {
+            background-color: #e5e3d2;
             border: 2px solid #D4AF37;
-            background: transparent;
             color: #D4AF37;
+            padding: 8px 20px;
+            margin: 5px;
             border-radius: 25px;
-            cursor: pointer;
             transition: all 0.3s ease;
         }
-        .filter-btn:hover, .filter-btn.active {
-            background: #D4AF37;
-            color: white;
+        .filtre-buton:hover, .filtre-buton.active {
+            background-color: #D4AF37;
+            color: #fff;
         }
-        .urun-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 2.5rem;
-            padding: 1.5rem;
+        .filtre-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
         }
         .urun-kart {
-            background: #e5e3d2;
-            border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(11, 11, 11, 0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: stretch;
-            padding: 0;
+            transition: transform 0.3s ease;
+            margin-bottom: 40px;
             border: none;
-            width: 400px;
-            height: 550px;
-            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .urun-kart:hover {
+            transform: translateY(-5px);
         }
         .urun-resim {
-            width: 100%;
-            height: 400px;
+            height: 250px;
             object-fit: cover;
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-            display: block;
-            flex-shrink: 0;
-        }
-        .urun-info {
-            background: #e5e3d2;
-            border-bottom-left-radius: 18px;
-            border-bottom-right-radius: 18px;
-            padding: 24px 18px 18px 18px;
-            text-align: left;
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         .urun-baslik {
-            color: #222;
-            font-size: 1.1rem;
+            color: #333;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin: 15px 0;
         }
         .urun-fiyat {
             color: #D4AF37;
-            font-size: 1rem;
-            font-weight: 500;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
-        .urun-aciklama {
-            color: #222;
-            font-size: 0.9rem;
-        }
-        .urun-kart[data-category="kartonpiyer"], .urun-kart[data-category="cita"] {
-            width: 350px;
-            height: 430px;
-        }
-        .urun-kart[data-category="kartonpiyer"] .urun-resim,
-        .urun-kart[data-category="cita"] .urun-resim {
-            height: 300px;
-        }
-        @media (max-width: 600px) {
-            .urunler-container {
-                padding: 10px;
-            }
-            .urun-grid {
-                grid-template-columns: 1fr;
-                gap: 1.2rem;
-                padding: 0.5rem;
-                justify-items: center;
-            }
-            .urun-kart {
-                width: 100% !important;
-                max-width: 320px;
-                height: auto !important;
-            }
-            .urun-resim {
-                height: 180px !important;
-            }
-            h1 {
-                font-size: 1.3rem;
-                text-align: center;
-            }
+        .kategori-baslik {
+            color: #D4AF37;
+            margin: 30px 0 20px;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -235,7 +173,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="../kategoriler/duvar-panelleri.html">Duvar Panelleri</a></li>
                             <li><a class="dropdown-item" href="../kategoriler/lambri.html">Lambri</a></li>
-                            <li><a class="dropdown-item" href="../kategoriler/pvc-panel.html">PVC Duvar Paneli</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/pvc-panel.html">PVC Duvar Panel</a></li>
                             <li><a class="dropdown-item" href="../kategoriler/duvar-citasi.html">Duvar Çıtası</a></li>
                             <li><a class="dropdown-item" href="../kategoriler/saray-tavan.html">Saray Tavan</a></li>
                             <li><a class="dropdown-item" href="../kategoriler/dekor-profili.html">Dekor Profili</a></li>
@@ -249,107 +187,155 @@
         </div>
     </nav>
 
-    <!-- Alt Kategoriler -->
-    <div class="urunler-container">
-        <h1>DEKOR PROFİLİ</h1>
-        <!-- Filtre Butonları -->
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Tümü</button>
-            <button class="filter-btn" data-filter="kartonpiyer">Kartonpiyer Profili</button>
-            <button class="filter-btn" data-filter="cita">Çıta Profili</button>
+    <!-- Filtre Butonları -->
+    <div class="container py-4">
+        <div class="filtre-container">
+            <button class="filtre-buton active" data-kategori="tumu">Tümü</button>
+            <button class="filtre-buton" data-kategori="kartonpiyer">Kartonpiyer Profili</button>
+            <button class="filtre-buton" data-kategori="cita">Çıta Profili</button>
         </div>
-        <div class="urun-grid">
-            <!-- Kartonpiyer Profili Ürünleri -->
-            <div class="urun-kart" data-category="kartonpiyer">
-                <img src="../urunresim/krp1.jpg" class="urun-resim" alt="Beyaz Altın Audy Kartonpiyer 12cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Beyaz Altın Audy Kartonpiyer 12cm</div>
-                    <div class="urun-fiyat">₺342,00</div>
+    </div>
+
+    <!-- Ürünler -->
+    <div class="container py-5">
+        <h1 class="text-center mb-5" style="color: #D4AF37;">DEKOR PROFİLİ</h1>
+
+        <!-- Kartonpiyer Profili -->
+        <h2 class="kategori-baslik" data-category="kartonpiyer">Kartonpiyer Profili</h2>
+        <div class="row">
+            <!-- Ürün 1 -->
+            <div class="col-md-4" data-category="kartonpiyer">
+                <div class="card urun-kart">
+                    <img src="../urunresim/krp1.jpg" class="card-img-top urun-resim" alt="Kartonpiyer Profili 1">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Beyaz Altın Audy Kartonpiyer 12cm</h5>
+                        <p class="urun-fiyat">₺342,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="kartonpiyer">
-                <img src="../urunresim/krp2.jpg" class="urun-resim" alt="Patina Audy Kartonpiyer 12cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Patina Audy Kartonpiyer 12cm</div>
-                    <div class="urun-fiyat">₺342,00</div>
+            <!-- Ürün 2 -->
+            <div class="col-md-4" data-category="kartonpiyer">
+                <div class="card urun-kart">
+                    <img src="../urunresim/krp2.jpg" class="card-img-top urun-resim" alt="Kartonpiyer Profili 2">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Patina Audy Kartonpiyer 12cm</h5>
+                        <p class="urun-fiyat">₺342,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="kartonpiyer">
-                <img src="../urunresim/krp3.jpg" class="urun-resim" alt="Eskitme Audy Kartonpiyer 12cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Eskitme Audy Kartonpiyer 12cm</div>
-                    <div class="urun-fiyat">₺342,00</div>
+            <!-- Ürün 3 -->
+            <div class="col-md-4" data-category="kartonpiyer">
+                <div class="card urun-kart">
+                    <img src="../urunresim/krp3.jpg" class="card-img-top urun-resim" alt="Kartonpiyer Profili 3">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Eskitme Audy Kartonpiyer 12cm</h5>
+                        <p class="urun-fiyat">₺342,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="kartonpiyer">
-                <img src="../urunresim/krp4.jpg" class="urun-resim" alt="Gümüş Audy Kartonpiyer 12cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Gümüş Audy Kartonpiyer 12cm</div>
-                    <div class="urun-fiyat">₺342,00</div>
+            <!-- Ürün 4 -->
+            <div class="col-md-4" data-category="kartonpiyer">
+                <div class="card urun-kart">
+                    <img src="../urunresim/krp4.jpg" class="card-img-top urun-resim" alt="Kartonpiyer Profili 4">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Gümüş Audy Kartonpiyer 12cm</h5>
+                        <p class="urun-fiyat">₺342,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="kartonpiyer">
-                <img src="../urunresim/krp5.jpg" class="urun-resim" alt="Beyaz Altın Eko Saray Kartonpiyer 11,5cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Beyaz Altın Eko Saray Kartonpiyer 11,5cm</div>
-                    <div class="urun-fiyat">₺300,00</div>
+            <!-- Ürün 5 -->
+            <div class="col-md-4" data-category="kartonpiyer">
+                <div class="card urun-kart">
+                    <img src="../urunresim/krp5.jpg" class="card-img-top urun-resim" alt="Kartonpiyer Profili 5">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Beyaz Altın Eko Saray Kartonpiyer 11,5cm</h5>
+                        <p class="urun-fiyat">₺300,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="kartonpiyer">
-                <img src="../urunresim/krp6.jpg" class="urun-resim" alt="Patina Eko Saray Kartonpiyer 11,5cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Patina Eko Saray Kartonpiyer 11,5cm</div>
-                    <div class="urun-fiyat">₺300,00</div>
+            <!-- Ürün 6 -->
+            <div class="col-md-4" data-category="kartonpiyer">
+                <div class="card urun-kart">
+                    <img src="../urunresim/krp6.jpg" class="card-img-top urun-resim" alt="Kartonpiyer Profili 6">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Patina Eko Saray Kartonpiyer 11,5cm</h5>
+                        <p class="urun-fiyat">₺300,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="kartonpiyer">
-                <img src="../urunresim/krp7.jpg" class="urun-resim" alt="Eskitme Eko Saray Kartonpiyer 11,5cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Eskitme Eko Saray Kartonpiyer 11,5cm</div>
-                    <div class="urun-fiyat">₺300,00</div>
+            <!-- Ürün 7 -->
+            <div class="col-md-4" data-category="kartonpiyer">
+                <div class="card urun-kart">
+                    <img src="../urunresim/krp7.jpg" class="card-img-top urun-resim" alt="Kartonpiyer Profili 7">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Eskitme Eko Saray Kartonpiyer 11,5cm</h5>
+                        <p class="urun-fiyat">₺300,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="kartonpiyer">
-                <img src="../urunresim/krp8.jpg" class="urun-resim" alt="Gümüş Eko Saray Kartonpiyer 11,5cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Gümüş Eko Saray Kartonpiyer 11,5cm</div>
-                    <div class="urun-fiyat">₺300,00</div>
+            <!-- Ürün 8 -->
+            <div class="col-md-4" data-category="kartonpiyer">
+                <div class="card urun-kart">
+                    <img src="../urunresim/krp8.jpg" class="card-img-top urun-resim" alt="Kartonpiyer Profili 8">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Gümüş Eko Saray Kartonpiyer 11,5cm</h5>
+                        <p class="urun-fiyat">₺300,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="kartonpiyer">
-                <img src="../urunresim/krp9.jpg" class="urun-resim" alt="Gümüş İşlemeli Saray Kartonpiyer 11 cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Gümüş İşlemeli Saray Kartonpiyer 11 cm</div>
-                    <div class="urun-fiyat">₺202,00</div>
+            <!-- Ürün 9 -->
+            <div class="col-md-4" data-category="kartonpiyer">
+                <div class="card urun-kart">
+                    <img src="../urunresim/krp9.jpg" class="card-img-top urun-resim" alt="Kartonpiyer Profili 9">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Gümüş İşlemeli Saray Kartonpiyer 11 cm</h5>
+                        <p class="urun-fiyat">₺202,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="kartonpiyer">
-                <img src="../urunresim/krp10.jpg" class="urun-resim" alt="Altın Eko Saray Kartonpiyer 11,5cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Altın Eko Saray Kartonpiyer 11,5cm</div>
-                    <div class="urun-fiyat">₺300,00</div>
+            <!-- Ürün 10 -->
+            <div class="col-md-4" data-category="kartonpiyer">
+                <div class="card urun-kart">
+                    <img src="../urunresim/krp10.jpg" class="card-img-top urun-resim" alt="Kartonpiyer Profili 10">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Altın Eko Saray Kartonpiyer 11,5cm</h5>
+                        <p class="urun-fiyat">₺300,00</p>
+                    </div>
                 </div>
             </div>
-            <!-- Çıta Profili Ürünleri -->
-            <div class="urun-kart" data-category="cita">
-                <img src="../urunresim/ct1.jpg" class="urun-resim" alt="Sarmaşık Beyaz Altın Duvar ve Tavan Çıtası 2cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Sarmaşık Beyaz Altın Duvar ve Tavan Çıtası 2cm</div>
-                    <div class="urun-fiyat">₺78,00</div>
+        </div>
+
+        <!-- Çıta Profili -->
+        <h2 class="kategori-baslik" data-category="cita">Çıta Profili</h2>
+        <div class="row">
+            <!-- Ürün 1 -->
+            <div class="col-md-4" data-category="cita">
+                <div class="card urun-kart">
+                    <img src="../urunresim/ct1.jpg" class="card-img-top urun-resim" alt="Stropiyer Profili 1">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Sarmaşık Beyaz Altın Duvar ve Tavan Çıtası 2cm</h5>
+                        <p class="urun-fiyat">₺78,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="cita">
-                <img src="../urunresim/ct2.jpg" class="urun-resim" alt="Sarmaşık Patina Duvar ve Tavan Çıtası 2cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Sarmaşık Patina Duvar ve Tavan Çıtası 2cm</div>
-                    <div class="urun-fiyat">₺78,00</div>
+            <!-- Ürün 2 -->
+            <div class="col-md-4" data-category="cita">
+                <div class="card urun-kart">
+                    <img src="../urunresim/ct2.jpg" class="card-img-top urun-resim" alt="Stropiyer Profili 2">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Sarmaşık Patina Duvar ve Tavan Çıtası 2cm</h5>
+                        <p class="urun-fiyat">₺78,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="cita">
-                <img src="../urunresim/ct3.jpg" class="urun-resim" alt="Sarmaşık Altın Duvar ve Tavan Çıtası 3cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Sarmaşık Altın Duvar ve Tavan Çıtası 3cm</div>
-                    <div class="urun-fiyat">₺144,00</div>
+            <!-- Ürün 3 -->
+            <div class="col-md-4" data-category="cita">
+                <div class="card urun-kart">
+                    <img src="../urunresim/ct3.jpg" class="card-img-top urun-resim" alt="Stropiyer Profili 3">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Sarmaşık Altın Duvar ve Tavan Çıtası 3cm</h5>
+                        <p class="urun-fiyat">₺144,00</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -369,17 +355,7 @@
                 if (isMobile()) {
                     e.preventDefault();
                     e.stopPropagation();
-                    
-                    // Diğer tüm dropdown'ları kapat
-                    document.querySelectorAll('.nav-item.dropdown').forEach(function(drop) {
-                        if (drop !== this.parentElement) {
-                            drop.classList.remove('show');
-                            const menu = drop.querySelector('.dropdown-menu');
-                            if (menu) menu.classList.remove('show');
-                        }
-                    }.bind(this));
-
-                    // Tıklanan dropdown'ı aç/kapat
+                    // Sadece dropdown'ı aç/kapat
                     const parent = this.parentElement;
                     parent.classList.toggle('show');
                     const menu = parent.querySelector('.dropdown-menu');
@@ -407,39 +383,35 @@
             });
         });
 
-        // Hamburger menü dışına tıklandığında menüyü kapat
-        document.addEventListener('click', function(e) {
-            if (isMobile()) {
-                const navbar = document.querySelector('.navbar-collapse');
-                const dropdown = document.querySelector('.nav-item.dropdown');
-                if (!navbar.contains(e.target) && !dropdown.contains(e.target)) {
-                    if (navbar.classList.contains('show')) {
-                        new bootstrap.Collapse(navbar).toggle();
-                    }
-                }
-            }
-        });
-    });
-    document.addEventListener('DOMContentLoaded', function() {
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const productCards = document.querySelectorAll('.urun-kart');
+        // Filtreleme işlevi
+        const filtreButonlari = document.querySelectorAll('.filtre-buton');
+        const urunler = document.querySelectorAll('[data-category]');
+        const kategoriBasliklari = document.querySelectorAll('.kategori-baslik');
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
+        filtreButonlari.forEach(buton => {
+            buton.addEventListener('click', function() {
                 // Aktif buton stilini güncelle
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+                filtreButonlari.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
 
-                const category = button.getAttribute('data-filter');
+                const secilenKategori = this.getAttribute('data-kategori');
 
-                // Ürünleri filtrele
-                productCards.forEach(card => {
-                    if (category === 'all' || card.getAttribute('data-category') === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+                // Tüm ürünleri ve başlıkları gizle
+                urunler.forEach(urun => urun.style.display = 'none');
+                kategoriBasliklari.forEach(baslik => baslik.style.display = 'none');
+
+                if (secilenKategori === 'tumu') {
+                    // Tüm ürünleri ve başlıkları göster
+                    urunler.forEach(urun => urun.style.display = 'block');
+                    kategoriBasliklari.forEach(baslik => baslik.style.display = 'block');
+                } else {
+                    // Seçilen kategoriye ait ürünleri ve başlığı göster
+                    const secilenUrunler = document.querySelectorAll(`[data-category="${secilenKategori}"]`);
+                    const secilenBaslik = document.querySelector(`.kategori-baslik[data-category="${secilenKategori}"]`);
+                    
+                    secilenUrunler.forEach(urun => urun.style.display = 'block');
+                    if (secilenBaslik) secilenBaslik.style.display = 'block';
+                }
             });
         });
     });

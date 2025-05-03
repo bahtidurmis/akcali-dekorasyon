@@ -8,83 +8,52 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../urunler.css">
     <style>
-        .filter-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
+        .filtre-buton {
+            background-color: #e5e3d2;
             border: 2px solid #D4AF37;
-            background: transparent;
             color: #D4AF37;
+            padding: 8px 20px;
+            margin: 5px;
             border-radius: 25px;
-            cursor: pointer;
             transition: all 0.3s ease;
         }
-        .filter-btn:hover, .filter-btn.active {
-            background: #D4AF37;
-            color: white;
+        .filtre-buton:hover, .filtre-buton.active {
+            background-color: #D4AF37;
+            color: #fff;
         }
-        .urun-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 2.5rem;
-            padding: 1.5rem;
+        .filtre-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
         }
         .urun-kart {
-            background: #e5e3d2;
-            border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(11, 11, 11, 0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: stretch;
-            padding: 0;
+            transition: transform 0.3s ease;
+            margin-bottom: 40px;
             border: none;
-            width: 400px;
-            height: 550px;
-            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .urun-kart:hover {
+            transform: translateY(-5px);
         }
         .urun-resim {
-            width: 100%;
-            height: 400px;
+            height: 250px;
             object-fit: cover;
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-            display: block;
-            flex-shrink: 0;
-        }
-        .urun-info {
-            background: #e5e3d2;
-            border-bottom-left-radius: 18px;
-            border-bottom-right-radius: 18px;
-            padding: 24px 18px 18px 18px;
-            text-align: left;
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         .urun-baslik {
-            color: #222;
-            font-size: 1.1rem;
+            color: #333;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin: 15px 0;
         }
         .urun-fiyat {
             color: #D4AF37;
-            font-size: 1rem;
-            font-weight: 500;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
-        .urun-aciklama {
-            color: #222;
-            font-size: 0.9rem;
+        .kategori-baslik {
+            color: #D4AF37;
+            margin: 30px 0 20px;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -156,48 +125,69 @@
         </div>
     </nav>
 
-    <!-- Alt Kategoriler -->
-    <div class="urunler-container">
-        <h1>LAMBRİ</h1>
-        <!-- Filtre Butonları -->
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Tümü</button>
-            <button class="filter-btn" data-filter="mdf">MDF Lambri</button>
+    <!-- Filtre Butonları -->
+    <div class="container py-4">
+        <div class="filtre-container">
+            <button class="filtre-buton active" data-kategori="tumu">Tümü</button>
+            <button class="filtre-buton" data-kategori="mdf">MDF Lambri</button>
         </div>
-        <div class="urun-grid">
-            <div class="urun-kart" data-category="mdf">
-                <img src="../urunresim/lambri1.jpg" class="urun-resim" alt="MDF Lambri 1">
-                <div class="urun-info">
-                    <div class="urun-baslik">MDF Lambri Beyaz 10x120 mm</div>
-                    <div class="urun-fiyat">₺350,00</div>
+    </div>
+
+    <!-- Ürünler -->
+    <div class="container py-5">
+        <h1 class="text-center mb-5" style="color: #D4AF37;">LAMBRİ</h1>
+
+        <!-- MDF Lambri -->
+        <h2 class="kategori-baslik" data-category="mdf">MDF Lambri</h2>
+        <div class="row">
+            <!-- Ürün 1 -->
+            <div class="col-md-4" data-category="mdf">
+                <div class="card urun-kart">
+                    <img src="../urunresim/lambri1.jpg" class="card-img-top urun-resim" alt="MDF Lambri 1">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Mdf Lux Palomino Duvar Panel Lambri 12 cm</h5>
+                        <p class="urun-fiyat">₺367,62</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="mdf">
-                <img src="../urunresim/lambri2.jpg" class="urun-resim" alt="MDF Lambri 2">
-                <div class="urun-info">
-                    <div class="urun-baslik">MDF Lambri Meşe 10x120 mm</div>
-                    <div class="urun-fiyat">₺370,00</div>
+            <!-- Ürün 2 -->
+            <div class="col-md-4" data-category="mdf">
+                <div class="card urun-kart">
+                    <img src="../urunresim/lambri2.jpg" class="card-img-top urun-resim" alt="MDF Lambri 2">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Mdf Lux Sand Grau Duvar Panel Lambri 12 cm</h5>
+                        <p class="urun-fiyat">₺367,62</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="mdf">
-                <img src="../urunresim/lambri3.jpg" class="urun-resim" alt="MDF Lambri 3">
-                <div class="urun-info">
-                    <div class="urun-baslik">MDF Lambri Ceviz 10x120 mm</div>
-                    <div class="urun-fiyat">₺370,00</div>
+            <!-- Ürün 3 -->
+            <div class="col-md-4" data-category="mdf">
+                <div class="card urun-kart">
+                    <img src="../urunresim/lambri3.jpg" class="card-img-top urun-resim" alt="MDF Lambri 3">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Mdf Lux Black Lead Duvar Panel Lambri 12 cm</h5>
+                        <p class="urun-fiyat">₺367,62</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="mdf">
-                <img src="../urunresim/lambri4.jpg" class="urun-resim" alt="MDF Lambri 4">
-                <div class="urun-info">
-                    <div class="urun-baslik">MDF Lambri Antrasit 10x120 mm</div>
-                    <div class="urun-fiyat">₺390,00</div>
+            <!-- Ürün 4 -->
+            <div class="col-md-4" data-category="mdf">
+                <div class="card urun-kart">
+                    <img src="../urunresim/lambri4.jpg" class="card-img-top urun-resim" alt="MDF Lambri 4">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Mdf Lux Chicago Concrete Duvar Panel Lambri 12 cm</h5>
+                        <p class="urun-fiyat">₺288,85</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="mdf">
-                <img src="../urunresim/lambri5.jpg" class="urun-resim" alt="MDF Lambri 5">
-                <div class="urun-info">
-                    <div class="urun-baslik">MDF Lambri Siyah 10x120 mm</div>
-                    <div class="urun-fiyat">₺400,00</div>
+            <!-- Ürün 5 -->
+            <div class="col-md-4" data-category="mdf">
+                <div class="card urun-kart">
+                    <img src="../urunresim/lambri5.jpg" class="card-img-top urun-resim" alt="MDF Lambri 5">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Mdf Lux Pecan Duvar Panel Lambri 12 cm</h5>
+                        <p class="urun-fiyat">₺288,85</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -245,25 +235,35 @@
             });
         });
 
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const productCards = document.querySelectorAll('.urun-kart');
+        // Filtreleme işlevi
+        const filtreButonlari = document.querySelectorAll('.filtre-buton');
+        const urunler = document.querySelectorAll('[data-category]');
+        const kategoriBasliklari = document.querySelectorAll('.kategori-baslik');
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
+        filtreButonlari.forEach(buton => {
+            buton.addEventListener('click', function() {
                 // Aktif buton stilini güncelle
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+                filtreButonlari.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
 
-                const category = button.getAttribute('data-filter');
+                const secilenKategori = this.getAttribute('data-kategori');
 
-                // Ürünleri filtrele
-                productCards.forEach(card => {
-                    if (category === 'all' || card.getAttribute('data-category') === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+                // Tüm ürünleri ve başlıkları gizle
+                urunler.forEach(urun => urun.style.display = 'none');
+                kategoriBasliklari.forEach(baslik => baslik.style.display = 'none');
+
+                if (secilenKategori === 'tumu') {
+                    // Tüm ürünleri ve başlıkları göster
+                    urunler.forEach(urun => urun.style.display = 'block');
+                    kategoriBasliklari.forEach(baslik => baslik.style.display = 'block');
+                } else {
+                    // Seçilen kategoriye ait ürünleri ve başlığı göster
+                    const secilenUrunler = document.querySelectorAll(`[data-category="${secilenKategori}"]`);
+                    const secilenBaslik = document.querySelector(`.kategori-baslik[data-category="${secilenKategori}"]`);
+                    
+                    secilenUrunler.forEach(urun => urun.style.display = 'block');
+                    if (secilenBaslik) secilenBaslik.style.display = 'block';
+                }
             });
         });
     });

@@ -70,97 +70,52 @@
                 position: static !important;
             }
         }
-        .filter-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
+        .filtre-buton {
+            background-color: #e5e3d2;
             border: 2px solid #D4AF37;
-            background: transparent;
             color: #D4AF37;
+            padding: 8px 20px;
+            margin: 5px;
             border-radius: 25px;
-            cursor: pointer;
             transition: all 0.3s ease;
         }
-        .filter-btn:hover, .filter-btn.active {
-            background: #D4AF37;
-            color: white;
+        .filtre-buton:hover, .filtre-buton.active {
+            background-color: #D4AF37;
+            color: #fff;
         }
-        .urun-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 2.5rem;
-            padding: 1.5rem;
+        .filtre-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
         }
         .urun-kart {
-            background: #e5e3d2;
-            border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(11, 11, 11, 0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: stretch;
-            padding: 0;
+            transition: transform 0.3s ease;
+            margin-bottom: 40px;
             border: none;
-            width: 400px;
-            height: 550px;
-            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .urun-kart:hover {
+            transform: translateY(-5px);
         }
         .urun-resim {
-            width: 100%;
-            height: 400px;
+            height: 250px;
             object-fit: cover;
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-            display: block;
-            flex-shrink: 0;
-        }
-        .urun-info {
-            background: #e5e3d2;
-            border-bottom-left-radius: 18px;
-            border-bottom-right-radius: 18px;
-            padding: 24px 18px 18px 18px;
-            text-align: left;
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         .urun-baslik {
-            color: #222;
-            font-size: 1.1rem;
+            color: #333;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin: 15px 0;
         }
         .urun-fiyat {
             color: #D4AF37;
-            font-size: 1rem;
-            font-weight: 500;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
-        .urun-aciklama {
-            color: #222;
-            font-size: 0.9rem;
-        }
-        .urun-kart[data-category="dikdortgen"] {
-            width: 500px;
-            height: 600px;
-        }
-        .urun-kart[data-category="dikdortgen"] .urun-resim {
-            height: 800px;
-        }
-        .urun-kart[data-category="dikdortgen"] {
-            width: 400px;
-            height: 400px;
-        }
-        .urun-kart[data-category="dikdortgen"] .urun-resim {
-            height: 260px;
+        .kategori-baslik {
+            color: #D4AF37;
+            margin: 30px 0 20px;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -218,7 +173,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="../kategoriler/duvar-panelleri.html">Duvar Panelleri</a></li>
                             <li><a class="dropdown-item" href="../kategoriler/lambri.html">Lambri</a></li>
-                            <li><a class="dropdown-item" href="../kategoriler/pvc-panel.html">PVC Duvar Paneli</a></li>
+                            <li><a class="dropdown-item" href="../kategoriler/pvc-panel.html">PVC Duvar Panel</a></li>
                             <li><a class="dropdown-item" href="../kategoriler/duvar-citasi.html">Duvar Çıtası</a></li>
                             <li><a class="dropdown-item" href="../kategoriler/saray-tavan.html">Saray Tavan</a></li>
                             <li><a class="dropdown-item" href="../kategoriler/dekor-profili.html">Dekor Profili</a></li>
@@ -232,142 +187,205 @@
         </div>
     </nav>
 
-    <!-- Alt Kategoriler -->
-    <div class="urunler-container">
-        <h1>SARAY TAVAN</h1>
-        <!-- Filtre Butonları -->
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Tümü</button>
-            <button class="filter-btn" data-filter="dikdortgen">Dikdörtgen Saray Tavan</button>
-            <button class="filter-btn" data-filter="oval">Oval Saray Tavan</button>
+    <!-- Filtre Butonları -->
+    <div class="container py-4">
+        <div class="filtre-container">
+            <button class="filtre-buton active" data-kategori="tumu">Tümü</button>
+            <button class="filtre-buton" data-kategori="dikdortgen">Dikdörtgen Saray Tavan</button>
+            <button class="filtre-buton" data-kategori="oval">Oval Saray Tavan</button>
         </div>
-        <div class="urun-grid">
-            <!-- Dikdörtgen Saray Tavanlar -->
-            <div class="urun-kart" data-category="dikdortgen">
-                <img src="../urunresim/dikd1.jpg" class="urun-resim" alt="Gümüş Dikdörtgen Saray Tavan 60*90 cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Gümüş Dikdörtgen Saray Tavan 60*90 cm</div>
-                    <div class="urun-fiyat">₺1.620,00</div>
+    </div>
+
+    <!-- Ürünler -->
+    <div class="container py-5">
+        <h1 class="text-center mb-5" style="color: #D4AF37;">SARAY TAVAN</h1>
+
+        <!-- Dikdörtgen Saray Tavan -->
+        <h2 class="kategori-baslik" data-category="dikdortgen">Dikdörtgen Saray Tavan</h2>
+        <div class="row">
+            <!-- Ürün 1 -->
+            <div class="col-md-4" data-category="dikdortgen">
+                <div class="card urun-kart">
+                    <img src="../urunresim/dikd1.jpg" class="card-img-top urun-resim" alt="Klasik Saray Tavan 1">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Gümüş Dikdörtgen Saray Tavan 60*90 cm</h5>
+                        <p class="urun-fiyat">₺1.620,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="dikdortgen">
-                <img src="../urunresim/dikd2.jpg" class="urun-resim" alt="Patina Dikdörtgen Saray Tavan 60*90 cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Patina Dikdörtgen Saray Tavan 60*90 cm</div>
-                    <div class="urun-fiyat">₺1.620,00</div>
+            <!-- Ürün 2 -->
+            <div class="col-md-4" data-category="dikdortgen">
+                <div class="card urun-kart">
+                    <img src="../urunresim/dikd2.jpg" class="card-img-top urun-resim" alt="Klasik Saray Tavan 2">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Patina Dikdörtgen Saray Tavan 60*90 cm</h5>
+                        <p class="urun-fiyat">₺1.620,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="dikdortgen">
-                <img src="../urunresim/dikd3.jpg" class="urun-resim" alt="Altın Dikdörtgen Saray Tavan 90*120 cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Altın Dikdörtgen Saray Tavan 90*120 cm</div>
-                    <div class="urun-fiyat">₺2.700,00</div>
+            <!-- Ürün 3 -->
+            <div class="col-md-4" data-category="dikdortgen">
+                <div class="card urun-kart">
+                    <img src="../urunresim/dikd3.jpg" class="card-img-top urun-resim" alt="Klasik Saray Tavan 3">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Altın Dikdörtgen Saray Tavan 90*120 cm</h5>
+                        <p class="urun-fiyat">₺2.700,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="dikdortgen">
-                <img src="../urunresim/dikd4.jpg" class="urun-resim" alt="Bordo Altın Saray Tavan Dikdörtgen 90*120">
-                <div class="urun-info">
-                    <div class="urun-baslik">Bordo Altın Saray Tavan Dikdörtgen 90*120</div>
-                    <div class="urun-fiyat">₺2.700,00</div>
+            <!-- Ürün 4 -->
+            <div class="col-md-4" data-category="dikdortgen">
+                <div class="card urun-kart">
+                    <img src="../urunresim/dikd4.jpg" class="card-img-top urun-resim" alt="Klasik Saray Tavan 4">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Bordo Altın Saray Tavan Dikdörtgen 90*120</h5>
+                        <p class="urun-fiyat">₺2.700,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="dikdortgen">
-                <img src="../urunresim/dikd5.jpg" class="urun-resim" alt="Eskitme Dikdörtgen Saray Tavan 90*120 cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Eskitme Dikdörtgen Saray Tavan 90*120 cm</div>
-                    <div class="urun-fiyat">₺2.700,00</div>
+            <!-- Ürün 5 -->
+            <div class="col-md-4" data-category="dikdortgen">
+                <div class="card urun-kart">
+                    <img src="../urunresim/dikd5.jpg" class="card-img-top urun-resim" alt="Klasik Saray Tavan 5">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Eskitme Dikdörtgen Saray Tavan 90*120 cm</h5>
+                        <p class="urun-fiyat">₺2.700,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="dikdortgen">
-                <img src="../urunresim/dikd6.jpg" class="urun-resim" alt="Gümüş Dikdörtgen Saray Tavan 90*120 cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Gümüş Dikdörtgen Saray Tavan 90*120 cm</div>
-                    <div class="urun-fiyat">₺2.700,00</div>
+            <!-- Ürün 6 -->
+            <div class="col-md-4" data-category="dikdortgen">
+                <div class="card urun-kart">
+                    <img src="../urunresim/dikd6.jpg" class="card-img-top urun-resim" alt="Klasik Saray Tavan 6">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Gümüş Dikdörtgen Saray Tavan 90*120 cm</h5>
+                        <p class="urun-fiyat">₺2.700,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="dikdortgen">
-                <img src="../urunresim/dikd7.jpg" class="urun-resim" alt="Altın Dikdörtgen Saray Tavan 120*160 cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Altın Dikdörtgen Saray Tavan 120*160 cm</div>
-                    <div class="urun-fiyat">₺4.320,00</div>
+            <!-- Ürün 7 -->
+            <div class="col-md-4" data-category="dikdortgen">
+                <div class="card urun-kart">
+                    <img src="../urunresim/dikd7.jpg" class="card-img-top urun-resim" alt="Klasik Saray Tavan 7">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Altın Dikdörtgen Saray Tavan 120*160 cm</h5>
+                        <p class="urun-fiyat">₺4.320,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="dikdortgen">
-                <img src="../urunresim/dikd8.jpg" class="urun-resim" alt="Eskitme Dikdörtgen Saray Tavan 120*160 cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Eskitme Dikdörtgen Saray Tavan 120*160 cm</div>
-                    <div class="urun-fiyat">₺4.320,00</div>
+            <!-- Ürün 8 -->
+            <div class="col-md-4" data-category="dikdortgen">
+                <div class="card urun-kart">
+                    <img src="../urunresim/dikd8.jpg" class="card-img-top urun-resim" alt="Klasik Saray Tavan 8">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Eskitme Dikdörtgen Saray Tavan 120*160 cm</h5>
+                        <p class="urun-fiyat">₺4.320,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="dikdortgen">
-                <img src="../urunresim/dikd9.jpg" class="urun-resim" alt="Beyaz Altın Dikdörtgen Saray Tavan 120*160 cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Beyaz Altın Dikdörtgen Saray Tavan 120*160 cm</div>
-                    <div class="urun-fiyat">₺4.320,00</div>
+            <!-- Ürün 9 -->
+            <div class="col-md-4" data-category="dikdortgen">
+                <div class="card urun-kart">
+                    <img src="../urunresim/dikd9.jpg" class="card-img-top urun-resim" alt="Klasik Saray Tavan 9">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Beyaz Altın Dikdörtgen Saray Tavan 120*160 cm</h5>
+                        <p class="urun-fiyat">₺4.320,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="dikdortgen">
-                <img src="../urunresim/dikd10.jpg" class="urun-resim" alt="Gümüş Dikdörtgen Saray Tavan 120*160 cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Gümüş Dikdörtgen Saray Tavan 120*160 cm</div>
-                    <div class="urun-fiyat">₺4.320,00</div>
+            <!-- Ürün 10 -->
+            <div class="col-md-4" data-category="dikdortgen">
+                <div class="card urun-kart">
+                    <img src="../urunresim/dikd10.jpg" class="card-img-top urun-resim" alt="Klasik Saray Tavan 10">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Gümüş Dikdörtgen Saray Tavan 120*160 cm</h5>
+                        <p class="urun-fiyat">₺4.320,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="dikdortgen">
-                <img src="../urunresim/dikd11.jpg" class="urun-resim" alt="Altın Dikdörtgen Saray Tavan 140*200 cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Altın Dikdörtgen Saray Tavan 140*200 cm</div>
-                    <div class="urun-fiyat">₺5.760,00</div>
+            <!-- Ürün 11 -->
+            <div class="col-md-4" data-category="dikdortgen">
+                <div class="card urun-kart">
+                    <img src="../urunresim/dikd11.jpg" class="card-img-top urun-resim" alt="Klasik Saray Tavan 11">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Altın Dikdörtgen Saray Tavan 140*200 cm</h5>
+                        <p class="urun-fiyat">₺5.760,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="dikdortgen">
-                <img src="../urunresim/dikd12.jpg" class="urun-resim" alt="Patina Dikdörtgen Saray Tavan 140*200 cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Patina Dikdörtgen Saray Tavan 140*200 cm</div>
-                    <div class="urun-fiyat">₺5.760,00</div>
+            <!-- Ürün 12 -->
+            <div class="col-md-4" data-category="dikdortgen">
+                <div class="card urun-kart">
+                    <img src="../urunresim/dikd12.jpg" class="card-img-top urun-resim" alt="Klasik Saray Tavan 12">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Patina Dikdörtgen Saray Tavan 140*200 cm</h5>
+                        <p class="urun-fiyat">₺5.760,00</p>
+                    </div>
                 </div>
             </div>
-            <!-- Oval Saray Tavanlar -->
-            <div class="urun-kart" data-category="oval">
-                <img src="../urunresim/oval1.jpg" class="urun-resim" alt="Altın Oval Saray Tavan 90cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Altın Oval Saray Tavan 90cm</div>
-                    <div class="urun-fiyat">₺2.160,00</div>
+        </div>
+
+        <!-- Oval Saray Tavan -->
+        <h2 class="kategori-baslik" data-category="oval">Oval Saray Tavan</h2>
+        <div class="row">
+            <!-- Ürün 1 -->
+            <div class="col-md-4" data-category="oval">
+                <div class="card urun-kart">
+                    <img src="../urunresim/oval1.jpg" class="card-img-top urun-resim" alt="Modern Saray Tavan 1">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Altın Oval Saray Tavan 90cm</h5>
+                        <p class="urun-fiyat">₺2.160,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="oval">
-                <img src="../urunresim/oval2.jpg" class="urun-resim" alt="Eskitme Oval Saray Tavan 90cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Eskitme Oval Saray Tavan 90cm</div>
-                    <div class="urun-fiyat">₺2.160,00</div>
+            <!-- Ürün 2 -->
+            <div class="col-md-4" data-category="oval">
+                <div class="card urun-kart">
+                    <img src="../urunresim/oval2.jpg" class="card-img-top urun-resim" alt="Modern Saray Tavan 2">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Eskitme Oval Saray Tavan 90cm</h5>
+                        <p class="urun-fiyat">₺2.160,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="oval">
-                <img src="../urunresim/oval3.jpg" class="urun-resim" alt="Beyaz Altın Oval Saray Tavan 90cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Beyaz Altın Oval Saray Tavan 90cm</div>
-                    <div class="urun-fiyat">₺2.160,00</div>
+            <!-- Ürün 3 -->
+            <div class="col-md-4" data-category="oval">
+                <div class="card urun-kart">
+                    <img src="../urunresim/oval3.jpg" class="card-img-top urun-resim" alt="Modern Saray Tavan 3">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Beyaz Altın Oval Saray Tavan 90cm</h5>
+                        <p class="urun-fiyat">₺2.160,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="oval">
-                <img src="../urunresim/oval4.jpg" class="urun-resim" alt="Patina Oval Saray Tavan 90cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Patina Oval Saray Tavan 90cm</div>
-                    <div class="urun-fiyat">₺2.160,00</div>
+            <!-- Ürün 4 -->
+            <div class="col-md-4" data-category="oval">
+                <div class="card urun-kart">
+                    <img src="../urunresim/oval4.jpg" class="card-img-top urun-resim" alt="Modern Saray Tavan 4">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Patina Oval Saray Tavan 90cm</h5>
+                        <p class="urun-fiyat">₺2.160,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="oval">
-                <img src="../urunresim/oval5.jpg" class="urun-resim" alt="Gümüş Oval Saray Tavan 90cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Gümüş Oval Saray Tavan 90cm</div>
-                    <div class="urun-fiyat">₺2.160,00</div>
+            <!-- Ürün 5 -->
+            <div class="col-md-4" data-category="oval">
+                <div class="card urun-kart">
+                    <img src="../urunresim/oval5.jpg" class="card-img-top urun-resim" alt="Modern Saray Tavan 5">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Gümüş Oval Saray Tavan 90cm</h5>
+                        <p class="urun-fiyat">₺2.160,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="oval">
-                <img src="../urunresim/oval6.jpg" class="urun-resim" alt="Altın Zümrüt Yeşil Oval Saray Tavan 90cm">
-                <div class="urun-info">
-                    <div class="urun-baslik">Altın Zümrüt Yeşil Oval Saray Tavan 90cm</div>
-                    <div class="urun-fiyat">₺2.100,00</div>
+            <!-- Ürün 6 -->
+            <div class="col-md-4" data-category="oval">
+                <div class="card urun-kart">
+                    <img src="../urunresim/oval6.jpg" class="card-img-top urun-resim" alt="Modern Saray Tavan 6">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Altın Zümrüt Yeşil Oval Saray Tavan 90cm</h5>
+                        <p class="urun-fiyat">₺2.100,00</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -387,16 +405,7 @@
                 if (isMobile()) {
                     e.preventDefault();
                     e.stopPropagation();
-                    // Diğer tüm dropdown'ları kapat
-                    document.querySelectorAll('.nav-item.dropdown').forEach(function(drop) {
-                        if (drop !== this.parentElement) {
-                            drop.classList.remove('show');
-                            const menu = drop.querySelector('.dropdown-menu');
-                            if (menu) menu.classList.remove('show');
-                        }
-                    }.bind(this));
-
-                    // Tıklanan dropdown'ı aç/kapat
+                    // Sadece dropdown'ı aç/kapat
                     const parent = this.parentElement;
                     parent.classList.toggle('show');
                     const menu = parent.querySelector('.dropdown-menu');
@@ -424,39 +433,35 @@
             });
         });
 
-        // Hamburger menü dışına tıklandığında menüyü kapat
-        document.addEventListener('click', function(e) {
-            if (isMobile()) {
-                const navbar = document.querySelector('.navbar-collapse');
-                const dropdown = document.querySelector('.nav-item.dropdown');
-                if (!navbar.contains(e.target) && !dropdown.contains(e.target)) {
-                    if (navbar.classList.contains('show')) {
-                        new bootstrap.Collapse(navbar).toggle();
-                    }
-                }
-            }
-        });
+        // Filtreleme işlevi
+        const filtreButonlari = document.querySelectorAll('.filtre-buton');
+        const urunler = document.querySelectorAll('[data-category]');
+        const kategoriBasliklari = document.querySelectorAll('.kategori-baslik');
 
-        // --- FİLTRELEME SİSTEMİ ---
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const productCards = document.querySelectorAll('.urun-kart');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
+        filtreButonlari.forEach(buton => {
+            buton.addEventListener('click', function() {
                 // Aktif buton stilini güncelle
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+                filtreButonlari.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
 
-                const category = button.getAttribute('data-filter');
+                const secilenKategori = this.getAttribute('data-kategori');
 
-                // Ürünleri filtrele
-                productCards.forEach(card => {
-                    if (category === 'all' || card.getAttribute('data-category') === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+                // Tüm ürünleri ve başlıkları gizle
+                urunler.forEach(urun => urun.style.display = 'none');
+                kategoriBasliklari.forEach(baslik => baslik.style.display = 'none');
+
+                if (secilenKategori === 'tumu') {
+                    // Tüm ürünleri ve başlıkları göster
+                    urunler.forEach(urun => urun.style.display = 'block');
+                    kategoriBasliklari.forEach(baslik => baslik.style.display = 'block');
+                } else {
+                    // Seçilen kategoriye ait ürünleri ve başlığı göster
+                    const secilenUrunler = document.querySelectorAll(`[data-category="${secilenKategori}"]`);
+                    const secilenBaslik = document.querySelector(`.kategori-baslik[data-category="${secilenKategori}"]`);
+                    
+                    secilenUrunler.forEach(urun => urun.style.display = 'block');
+                    if (secilenBaslik) secilenBaslik.style.display = 'block';
+                }
             });
         });
     });

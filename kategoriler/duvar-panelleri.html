@@ -4,117 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Duvar Panelleri - Akçalı Dekorasyon</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../urunler.css">
     <style>
-        .filter-buttons {
-            display: flex;
+        .navbar-toggler-icon {
+            background: none !important;
+            display: flex !important;
+            flex-direction: column;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            align-items: center;
+            width: 1.8em;
+            height: 1.8em;
+            padding: 0;
         }
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
-            border: 2px solid #D4AF37;
-            background: transparent;
-            color: #D4AF37;
-            border-radius: 25px;
-            cursor: pointer;
+
+        .navbar-toggler-icon div {
+            width: 1.5em;
+            height: 3px;
+            background-color: #D4AF37;
+            margin: 0.2em 0;
+            border-radius: 2px;
             transition: all 0.3s ease;
         }
-        .filter-btn:hover, .filter-btn.active {
-            background: #D4AF37;
-            color: white;
-        }
-        .urun-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 2.5rem;
-            padding: 1.5rem;
+
+        .navbar-toggler {
+            border-color: #D4AF37 !important;
+            padding: 0.5rem;
         }
         .urun-kart {
-            background: #e5e3d2;
-            border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(11, 11, 11, 0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: stretch;
-            padding: 0;
+            transition: transform 0.3s ease;
+            margin-bottom: 40px;
             border: none;
-            width: 400px;
-            height: 550px;
-            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .urun-kart:hover {
+            transform: translateY(-5px);
         }
         .urun-resim {
-            width: 100%;
             height: 400px;
             object-fit: cover;
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-            display: block;
-            flex-shrink: 0;
-        }
-        .urun-info {
-            background: #e5e3d2;
-            border-bottom-left-radius: 18px;
-            border-bottom-right-radius: 18px;
-            padding: 24px 18px 18px 18px;
-            text-align: left;
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         .urun-baslik {
-            color: #222;
-            font-size: 1.1rem;
+            color: #333;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin: 15px 0;
+        }
+        .urun-aciklama {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
         }
         .urun-fiyat {
             color: #D4AF37;
-            font-size: 1rem;
-            font-weight: 500;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
-        .urun-aciklama {
-            color: #222;
-            font-size: 0.9rem;
+        .kategori-baslik {
+            color: #D4AF37;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #D4AF37;
+        }
+        .filtre-buton {
+            background-color: #e5e3d2;
+            border: 2px solid #D4AF37;
+            color: #D4AF37;
+            padding: 8px 20px;
+            margin: 5px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .filtre-buton:hover, .filtre-buton.active {
+            background-color: #D4AF37;
+            color: #fff;
+        }
+        .filtre-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .urun-kart {
+            display: none;
+        }
+        .urun-kart.show {
+            display: block;
         }
     </style>
 </head>
 <body style="padding-top: 80px;">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="../index.html">
-                <div class="logo-container me-2" style="width: 40px; height: 40px;">
-                    <svg class="logo-svg" viewBox="0 0 200 200" style="width: 100%; height: 100%;">
-                        <path class="logo-path main-path" 
-                            d="M100 30 L160 70 L160 140 L40 140 L40 70 Z"
-                            stroke="#D4AF37"
-                            stroke-width="5"
-                            fill="transparent"
-                        />
-                        <path class="logo-path"
-                            d="M70 85 L130 85"
-                            stroke="#D4AF37"
-                            stroke-width="5"
-                            stroke-linecap="round"
-                        />
-                        <path class="logo-path"
-                            d="M90 140 L90 105 L110 105 L110 140"
-                            stroke="#D4AF37"
-                            stroke-width="5"
-                            fill="transparent"
-                        />
-                    </svg>
-                </div>
                 <span class="brand-text">Akçalı Dekorasyon</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -127,370 +114,454 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav text-center text-lg-end ms-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link py-2 py-lg-0" href="../index.html#anasayfa">Ana Sayfa</a>
+                        <a class="nav-link" href="../index.html">Ana Sayfa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link py-2 py-lg-0" href="../index.html#neler-yapiyoruz">Neler Yapıyoruz</a>
+                        <a class="nav-link" href="../index.html#hizmetler">Hizmetlerimiz</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link py-2 py-lg-0" href="../index.html#hizmetler">Projelerimiz</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle py-2 py-lg-0 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Kullandığımız Ürünler
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../kategoriler/duvar-panelleri.html">Duvar Panelleri</a></li>
-                            <li><a class="dropdown-item" href="../kategoriler/lambri.html">Lambri</a></li>
-                            <li><a class="dropdown-item" href="../kategoriler/pvc-panel.html">PVC Duvar Paneli</a></li>
-                            <li><a class="dropdown-item" href="../kategoriler/duvar-citasi.html">Duvar Çıtası</a></li>
-                            <li><a class="dropdown-item" href="../kategoriler/saray-tavan.html">Saray Tavan</a></li>
-                            <li><a class="dropdown-item" href="../kategoriler/dekor-profili.html">Dekor Profili</a></li>
-                        </ul>
+                        <a class="nav-link active" href="../urunler.html">Kullandığımız Ürünler</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link py-2 py-lg-0" href="../index.html#iletisim">İletişim</a>
+                        <a class="nav-link" href="../index.html#iletisim">İletişim</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Ürünler ve Filtreleme -->
+    <!-- Ürünler -->
     <div class="container py-5">
-        <h1 class="text-center mb-5" style="color: #D4AF37;">DUVAR PANELLERİ</h1>
-        
+        <h1 class="text-center mb-5" style="color: #D4AF37;">Duvar Panelleri</h1>
+
         <!-- Filtre Butonları -->
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Tümü</button>
-            <button class="filter-btn" data-filter="3d">3D Duvar Paneli</button>
-            <button class="filter-btn" data-filter="akustik">Akustik Duvar Paneli</button>
-            <button class="filter-btn" data-filter="tavan">Tavan Paneli</button>
+        <div class="filtre-container">
+            <button class="filtre-buton active" data-filter="all">Tümü</button>
+            <button class="filtre-buton" data-filter="3d">3D Duvar Panelleri</button>
+            <button class="filtre-buton" data-filter="akustik">Akustik Duvar Panelleri</button>
+            <button class="filtre-buton" data-filter="tavan">Tavan Panelleri</button>
         </div>
 
-        <!-- Ürün Grid -->
-        <div class="urun-grid">
-            <!-- 3D Duvar Paneli Ürünleri -->
-            <div class="urun-kart" data-category="3d">
-                <img src="../urunresim/3d1.jpg" class="urun-resim" alt="3D Duvar Paneli 1">
-                <div class="urun-info">
-                    <div class="urun-baslik">3D Altıgen Duvar Paneli Altın</div>
-                    <div class="urun-fiyat">₺45,00</div>
+        <!-- 3D Duvar Panelleri -->
+        <h2 class="kategori-baslik" data-category="3d">3D Duvar Panelleri</h2>
+        <div class="row">
+            <!-- 3D Ürün 1 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="3d">
+                    <img src="../urunresim/3d1.jpg" class="card-img-top urun-resim" alt="3D Duvar Paneli 1">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">3D Altıgen Duvar Paneli Altın</h5>
+                        <p class="urun-fiyat">₺45,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="3d">
-                <img src="../urunresim/3d2.jpg" class="urun-resim" alt="3D Duvar Paneli 2">
-                <div class="urun-info">
-                    <div class="urun-baslik">3D Altıgen Duvar Paneli Siyah</div>
-                    <div class="urun-fiyat">₺45,00</div>
+            <!-- 3D Ürün 2 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="3d">
+                    <img src="../urunresim/3d2.jpg" class="card-img-top urun-resim" alt="3D Duvar Paneli 2">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">3D Altıgen Duvar Paneli Siyah</h5>
+                        <p class="urun-fiyat">₺45,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="3d">
-                <img src="../urunresim/3d3.jpg" class="urun-resim" alt="3D Duvar Paneli 3">
-                <div class="urun-info">
-                    <div class="urun-baslik">3D Altıgen Duvar Paneli Gümüş</div>
-                    <div class="urun-fiyat">₺45,00</div>
+            <!-- 3D Ürün 3 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="3d">
+                    <img src="../urunresim/3d3.jpg" class="card-img-top urun-resim" alt="3D Duvar Paneli 3">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">3D Altıgen Duvar Paneli Gümüş</h5>
+                        <p class="urun-fiyat">₺45,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="3d">
-                <img src="../urunresim/3d4.jpg" class="urun-resim" alt="3D Duvar Paneli 4">
-                <div class="urun-info">
-                    <div class="urun-baslik">3D Altıgen Duvar Paneli Beyaz</div>
-                    <div class="urun-fiyat">₺45,00</div>
+            <!-- 3D Ürün 4 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="3d">
+                    <img src="../urunresim/3d4.jpg" class="card-img-top urun-resim" alt="3D Duvar Paneli 4">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">3D Altıgen Duvar Paneli Beyaz</h5>
+                        <p class="urun-fiyat">₺45,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="3d">
-                <img src="../urunresim/3d5.jpg" class="urun-resim" alt="3D Duvar Paneli 5">
-                <div class="urun-info">
-                    <div class="urun-baslik">3D Altıgen Duvar Paneli Kırmızı</div>
-                    <div class="urun-fiyat">₺45,00</div>
+            <!-- 3D Ürün 5 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="3d">
+                    <img src="../urunresim/3d5.jpg" class="card-img-top urun-resim" alt="3D Duvar Paneli 5">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">3D Altıgen Duvar Paneli Kırmızı</h5>
+                        <p class="urun-fiyat">₺45,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="3d">
-                <img src="../urunresim/3d6.jpg" class="urun-resim" alt="3D Duvar Paneli 6">
-                <div class="urun-info">
-                    <div class="urun-baslik">3D Venüs Duvar Paneli Altın</div>
-                    <div class="urun-fiyat">₺84,00</div>
+            <!-- 3D Ürün 6 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="3d">
+                    <img src="../urunresim/3d6.jpg" class="card-img-top urun-resim" alt="3D Duvar Paneli 6">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">3D Venüs Duvar Paneli Altın</h5>
+                        <p class="urun-fiyat">₺84,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="3d">
-                <img src="../urunresim/3d7.jpg" class="urun-resim" alt="3D Duvar Paneli 7">
-                <div class="urun-info">
-                    <div class="urun-baslik">3D Venüs Duvar Paneli Siyah</div>
-                    <div class="urun-fiyat">₺84,00</div>
+            <!-- 3D Ürün 7 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="3d">
+                    <img src="../urunresim/3d7.jpg" class="card-img-top urun-resim" alt="3D Duvar Paneli 7">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">3D Venüs Duvar Paneli Siyah</h5>
+                        <p class="urun-fiyat">₺84,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="3d">
-                <img src="../urunresim/3d8.jpg" class="urun-resim" alt="3D Duvar Paneli 8">
-                <div class="urun-info">
-                    <div class="urun-baslik">3D Venüs Duvar Paneli Gümüş</div>
-                    <div class="urun-fiyat">₺84,00</div>
+            <!-- 3D Ürün 8 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="3d">
+                    <img src="../urunresim/3d8.jpg" class="card-img-top urun-resim" alt="3D Duvar Paneli 8">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">3D Venüs Duvar Paneli Gümüş</h5>
+                        <p class="urun-fiyat">₺84,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="3d">
-                <img src="../urunresim/3d9.jpg" class="urun-resim" alt="3D Duvar Paneli 9">
-                <div class="urun-info">
-                    <div class="urun-baslik">3D Venüs Duvar Paneli Beyaz</div>
-                    <div class="urun-fiyat">₺84,00</div>
+            <!-- 3D Ürün 9 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="3d">
+                    <img src="../urunresim/3d9.jpg" class="card-img-top urun-resim" alt="3D Duvar Paneli 9">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">3D Venüs Duvar Paneli Beyaz</h5>
+                        <p class="urun-fiyat">₺84,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="3d">
-                <img src="../urunresim/3d10.jpg" class="urun-resim" alt="3D Duvar Paneli 10">
-                <div class="urun-info">
-                    <div class="urun-baslik">3D Venüs Duvar Paneli Kırmızı</div>
-                    <div class="urun-fiyat">₺84,00</div>
+            <!-- 3D Ürün 10 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="3d">
+                    <img src="../urunresim/3d10.jpg" class="card-img-top urun-resim" alt="3D Duvar Paneli 10">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">3D Venüs Duvar Paneli Kırmızı</h5>
+                        <p class="urun-fiyat">₺84,00</p>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Akustik Duvar Paneli Ürünleri -->
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik1.png" class="urun-resim" alt="Akustik Duvar Paneli 1">
-                <div class="urun-info">
-                    <div class="urun-baslik">Yeni Nesil Lambri Duvar Paneli Teak 60*60 cm</div>
-                    <div class="urun-fiyat">₺525,17</div>
+        <!-- Akustik Duvar Panelleri -->
+        <h2 class="kategori-baslik" data-category="akustik">Akustik Duvar Panelleri</h2>
+        <div class="row">
+            <!-- Akustik Ürün 1 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik1.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 1">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Yeni Nesil Lambri Duvar Paneli Teak 60*60 cm</h5>
+                        <p class="urun-fiyat">₺525,17</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik2.png" class="urun-resim" alt="Akustik Duvar Paneli 2">
-                <div class="urun-info">
-                    <div class="urun-baslik">Yeni Nesil Lambri Duvar Paneli Sonoma 60*60 cm</div>
-                    <div class="urun-fiyat">₺525,17</div>
+            <!-- Akustik Ürün 2 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik2.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 2">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Yeni Nesil Lambri Duvar Paneli Sonoma 60*60 cm</h5>
+                        <p class="urun-fiyat">₺525,17</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik3.png" class="urun-resim" alt="Akustik Duvar Paneli 3">
-                <div class="urun-info">
-                    <div class="urun-baslik">Yeni Nesil Lambri Duvar Paneli Siyah 60*60 cm</div>
-                    <div class="urun-fiyat">₺525,17</div>
+            <!-- Akustik Ürün 3 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik3.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 3">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Yeni Nesil Lambri Duvar Paneli Siyah 60*60 cm</h5>
+                        <p class="urun-fiyat">₺525,17</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik4.png" class="urun-resim" alt="Akustik Duvar Paneli 4">
-                <div class="urun-info">
-                    <div class="urun-baslik">Yeni Nesil Lambri Duvar Paneli Meşe 60*60 cm</div>
-                    <div class="urun-fiyat">₺525,17</div>
+            <!-- Akustik Ürün 4 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik4.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 4">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Yeni Nesil Lambri Duvar Paneli Meşe 60*60 cm</h5>
+                        <p class="urun-fiyat">₺525,17</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik5.png" class="urun-resim" alt="Akustik Duvar Paneli 5">
-                <div class="urun-info">
-                    <div class="urun-baslik">Yeni Nesil Lambri Duvar Paneli Fırtına Gri 60*60 cm</div>
-                    <div class="urun-fiyat">₺630,21</div>
+            <!-- Akustik Ürün 5 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik5.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 5">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Yeni Nesil Lambri Duvar Paneli Fırtına Gri 60*60 cm</h5>
+                        <p class="urun-fiyat">₺630,21</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik6.png" class="urun-resim" alt="Akustik Duvar Paneli 6">
-                <div class="urun-info">
-                    <div class="urun-baslik">Yeni Nesil Lambri Duvar Paneli Antrasit 60*60 cm</div>
-                    <div class="urun-fiyat">₺630,21</div>
+            <!-- Akustik Ürün 6 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik6.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 6">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Yeni Nesil Lambri Duvar Paneli Antrasit 60*60 cm</h5>
+                        <p class="urun-fiyat">₺630,21</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik7.png" class="urun-resim" alt="Akustik Duvar Paneli 7">
-                <div class="urun-info">
-                    <div class="urun-baslik">Yeni Nesil Lambri Duvar Paneli Babil 100*275 cm</div>
-                    <div class="urun-fiyat">₺1.800,00</div>
+            <!-- Akustik Ürün 7 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik7.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 7">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Yeni Nesil Lambri Duvar Paneli Babil 100*275 cm</h5>
+                        <p class="urun-fiyat">₺1.800,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik8.png" class="urun-resim" alt="Akustik Duvar Paneli 8">
-                <div class="urun-info">
-                    <div class="urun-baslik">Yeni Nesil Lambri Duvar Paneli Antrasit 100*275 cm</div>
-                    <div class="urun-fiyat">₺1.800,00</div>
+            <!-- Akustik Ürün 8 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik8.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 8">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Yeni Nesil Lambri Duvar Paneli Antrasit 100*275 cm</h5>
+                        <p class="urun-fiyat">₺1.800,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik9.png" class="urun-resim" alt="Akustik Duvar Paneli 9">
-                <div class="urun-info">
-                    <div class="urun-baslik">Yeni Nesil Lambri Duvar Paneli Teak 60*275 cm</div>
-                    <div class="urun-fiyat">₺1.943,14</div>
+            <!-- Akustik Ürün 9 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik9.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 9">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Yeni Nesil Lambri Duvar Paneli Teak 60*275 cm</h5>
+                        <p class="urun-fiyat">₺1.943,14</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik10.png" class="urun-resim" alt="Akustik Duvar Paneli 10">
-                <div class="urun-info">
-                    <div class="urun-baslik">Yeni Nesil Lambri Duvar Paneli Sonoma 60*275 cm</div>
-                    <div class="urun-fiyat">₺1.943,14</div>
+            <!-- Akustik Ürün 10 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik10.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 10">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Yeni Nesil Lambri Duvar Paneli Sonoma 60*275 cm</h5>
+                        <p class="urun-fiyat">₺1.943,14</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik11.png" class="urun-resim" alt="Akustik Duvar Paneli 11">
-                <div class="urun-info">
-                    <div class="urun-baslik">Yeni Nesil Lambri Duvar Paneli Antrasit 60*275 cm</div>
-                    <div class="urun-fiyat">₺2.363,28</div>
+            <!-- Akustik Ürün 11 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik11.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 11">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Yeni Nesil Lambri Duvar Paneli Antrasit 60*275 cm</h5>
+                        <p class="urun-fiyat">₺2.363,28</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik12.png" class="urun-resim" alt="Akustik Duvar Paneli 12">
-                <div class="urun-info">
-                    <div class="urun-baslik">Yeni Nesil Lambri Duvar Paneli Fırtına Gri 60*275 cm</div>
-                    <div class="urun-fiyat">₺2.363,28</div>
+            <!-- Akustik Ürün 12 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik12.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 12">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Yeni Nesil Lambri Duvar Paneli Fırtına Gri 60*275 cm</h5>
+                        <p class="urun-fiyat">₺2.363,28</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="akustik">
-                <img src="../urunresim/akustik13.png" class="urun-resim" alt="Akustik Duvar Paneli 13">
-                <div class="urun-info">
-                    <div class="urun-baslik">Lux Akustik Lambri Duvar Paneli Oak 60*280 cm</div>
-                    <div class="urun-fiyat">₺3.000,00</div>
+            <!-- Akustik Ürün 13 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="akustik">
+                    <img src="../urunresim/akustik13.png" class="card-img-top urun-resim" alt="Akustik Duvar Paneli 13">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Lux Akustik Lambri Duvar Paneli Oak 60*280 cm</h5>
+                        <p class="urun-fiyat">₺3.000,00</p>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Tavan Paneli Ürünleri -->
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp1.jpg" class="urun-resim" alt="Tavan Paneli 1">
-                <div class="urun-info">
-                    <div class="urun-baslik">Selçuk Beyaz Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺252,00</div>
+        <!-- Tavan Panelleri -->
+        <h2 class="kategori-baslik" data-category="tavan">Tavan Panelleri</h2>
+        <div class="row">
+            <!-- Tavan Ürün 1 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp1.jpg" class="card-img-top urun-resim" alt="Tavan Paneli 1">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Selçuk Beyaz Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺252,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp2.jpg" class="urun-resim" alt="Tavan Paneli 2">
-                <div class="urun-info">
-                    <div class="urun-baslik">Selçuk Siyah Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺252,00</div>
+            <!-- Tavan Ürün 2 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp2.jpg" class="card-img-top urun-resim" alt="Tavan Paneli 2">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Selçuk Siyah Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺252,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp3.jpg" class="urun-resim" alt="Tavan Paneli 3">
-                <div class="urun-info">
-                    <div class="urun-baslik">Selçuk Altın Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺252,00</div>
+            <!-- Tavan Ürün 3 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp3.jpg" class="card-img-top urun-resim" alt="Tavan Paneli 3">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Selçuk Altın Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺252,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp4.png" class="urun-resim" alt="Tavan Paneli 4">
-                <div class="urun-info">
-                    <div class="urun-baslik">Moderna Siyah Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺252,00</div>
+            <!-- Tavan Ürün 4 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp4.png" class="card-img-top urun-resim" alt="Tavan Paneli 4">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Moderna Siyah Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺252,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp5.jpg" class="urun-resim" alt="Tavan Paneli 5">
-                <div class="urun-info">
-                    <div class="urun-baslik">Moderna Gümüş Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺252,00</div>
+            <!-- Tavan Ürün 5 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp5.jpg" class="card-img-top urun-resim" alt="Tavan Paneli 5">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Moderna Gümüş Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺252,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp6.jpg" class="urun-resim" alt="Tavan Paneli 6">
-                <div class="urun-info">
-                    <div class="urun-baslik">Moderna Altın Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺252,00</div>
+            <!-- Tavan Ürün 6 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp6.jpg" class="card-img-top urun-resim" alt="Tavan Paneli 6">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Moderna Altın Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺252,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp7.jpg" class="urun-resim" alt="Tavan Paneli 7">
-                <div class="urun-info">
-                    <div class="urun-baslik">Sakarya Gümüş Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺252,00</div>
+            <!-- Tavan Ürün 7 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp7.jpg" class="card-img-top urun-resim" alt="Tavan Paneli 7">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Sakarya Gümüş Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺252,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp8.jpg" class="urun-resim" alt="Tavan Paneli 8">
-                <div class="urun-info">
-                    <div class="urun-baslik">Avangarde Altın Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺360,00</div>
+            <!-- Tavan Ürün 8 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp8.jpg" class="card-img-top urun-resim" alt="Tavan Paneli 8">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Avangarde Altın Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺360,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp9.jpg" class="urun-resim" alt="Tavan Paneli 9">
-                <div class="urun-info">
-                    <div class="urun-baslik">Avangarde Gümüş Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺360,00</div>
+            <!-- Tavan Ürün 9 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp9.jpg" class="card-img-top urun-resim" alt="Tavan Paneli 9">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Avangarde Gümüş Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺360,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp10.jpg" class="urun-resim" alt="Tavan Paneli 10">
-                <div class="urun-info">
-                    <div class="urun-baslik">Avangarde Patina Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺360,00</div>
+            <!-- Tavan Ürün 10 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp10.jpg" class="card-img-top urun-resim" alt="Tavan Paneli 10">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Avangarde Patina Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺360,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp11.jpg" class="urun-resim" alt="Tavan Paneli 11">
-                <div class="urun-info">
-                    <div class="urun-baslik">Avangarde Boyanabilir Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺360,00</div>
+            <!-- Tavan Ürün 11 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp11.jpg" class="card-img-top urun-resim" alt="Tavan Paneli 11">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Avangarde Boyanabilir Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺360,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp12.jpg" class="urun-resim" alt="Tavan Paneli 12">
-                <div class="urun-info">
-                    <div class="urun-baslik">Avangarde Beyaz Altın Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺360,00</div>
+            <!-- Tavan Ürün 12 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp12.jpg" class="card-img-top urun-resim" alt="Tavan Paneli 12">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Avangarde Beyaz Altın Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺360,00</p>
+                    </div>
                 </div>
             </div>
-            <div class="urun-kart" data-category="tavan">
-                <img src="../urunresim/tavanp13.jpg" class="urun-resim" alt="Tavan Paneli 13">
-                <div class="urun-info">
-                    <div class="urun-baslik">Avangarde Eskitme Pvc Tavan Paneli 60*60 cm</div>
-                    <div class="urun-fiyat">₺360,00</div>
+            <!-- Tavan Ürün 13 -->
+            <div class="col-md-4">
+                <div class="card urun-kart show" data-category="tavan">
+                    <img src="../urunresim/tavanp13.jpg" class="card-img-top urun-resim" alt="Tavan Paneli 13">
+                    <div class="card-body">
+                        <h5 class="card-title urun-baslik">Avangarde Eskitme Pvc Tavan Paneli 60*60 cm</h5>
+                        <p class="urun-fiyat">₺360,00</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="../js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const productCards = document.querySelectorAll('.urun-kart');
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filtre-buton');
+            const productCards = document.querySelectorAll('.urun-kart');
+            const categoryTitles = document.querySelectorAll('.kategori-baslik');
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Aktif buton stilini güncelle
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Aktif buton stilini güncelle
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
 
-                const category = button.getAttribute('data-filter');
+                    const filter = this.getAttribute('data-filter');
 
-                // Ürünleri filtrele
-                productCards.forEach(card => {
-                    if (category === 'all' || card.getAttribute('data-category') === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Mobil menü için mevcut kodlar
-        function isMobile() {
-            return window.innerWidth < 992;
-        }
-
-        // Dropdown ana başlığa tıklanınca menü kapanmasın
-        document.querySelectorAll('.nav-item.dropdown > .dropdown-toggle').forEach(function(dropdownToggle) {
-            dropdownToggle.addEventListener('click', function(e) {
-                if (isMobile()) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    // Sadece dropdown'ı aç/kapat
-                    const parent = this.parentElement;
-                    parent.classList.toggle('show');
-                    const menu = parent.querySelector('.dropdown-menu');
-                    if (menu) menu.classList.toggle('show');
-                }
-            });
-        });
-
-        // Dropdown içindeki bir kategoriye tıklanınca menüyü kapat
-        document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(function(item) {
-            item.addEventListener('click', function() {
-                if (isMobile()) {
-                    // Dropdown'u ve menüyü kapat
-                    document.querySelectorAll('.nav-item.dropdown').forEach(function(drop){
-                        drop.classList.remove('show');
-                        var menu = drop.querySelector('.dropdown-menu');
-                        if(menu) menu.classList.remove('show');
+                    // Tüm ürünleri ve başlıkları gizle
+                    productCards.forEach(card => {
+                        card.classList.remove('show');
                     });
-                    // Hamburger menüyü kapat
-                    const navbarCollapse = document.querySelector('.navbar-collapse.show');
-                    if (navbarCollapse) {
-                        new bootstrap.Collapse(navbarCollapse).toggle();
-                    }
+                    categoryTitles.forEach(title => {
+                        title.style.display = 'none';
+                    });
+
+                    // Filtreleme
+                    if (filter === 'all') {
+                        productCards.forEach(card => {
+                            card.classList.add('show');
+                        });
+                        categoryTitles.forEach(title => {
+                            title.style.display = 'block';
+                        });
+                    } else {
+                        productCards.forEach(card => {
+                            if (card.getAttribute('data-category') === filter) {
+                                card.classList.add('show');
+                            }
+                        });
+                        categoryTitles.forEach(title => {
+                            if (title.getAttribute('data-category') === filter) {
+                                title.style.display = 'block';
+                            }
+                        });
                 }
             });
         });
